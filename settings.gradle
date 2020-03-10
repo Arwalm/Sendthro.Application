@@ -1,0 +1,2 @@
+rootProject.name='Send Thro'
+include ':app'
