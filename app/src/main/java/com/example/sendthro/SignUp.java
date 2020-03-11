@@ -1,13 +1,23 @@
 package com.example.sendthro;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CheckBox;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Checked;
@@ -45,6 +55,11 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
 
     private Validator validator;
 
+    ProgressBar progressBar;
+
+    TextView SignIntxt;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +78,15 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
             }
 
         });
+
+        SignIntxt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent change = new Intent(SignUp.this, SignIn.class);
+                startActivity(change);
+                finish();
+            }
+        });
     }
 
     private void initView() {
@@ -73,11 +97,22 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
         checkBoxAgree = findViewById(R.id.checkBoxAgree);
         signupbtn = (Button) findViewById(R.id.signupbtn);
         skipbtn = (Button) findViewById(R.id.skipbtn);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        SignIntxt = (TextView) findViewById(R.id.SignIntxt);
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() != null ){
+            Intent SignUp = new Intent(SignUp.this, HomePage.class);
+            startActivity(SignUp);
+            finish();
+        }
 
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signupbtn_onClick(view);
+                progressBar.setVisibility(View.VISIBLE);
+
             }
         });
     }
@@ -88,15 +123,28 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
         if (username.equalsIgnoreCase("pmk")) {
             Usernametxt.setError(getText(R.string.username_already_exists));
         }
+
     }
 
     @Override
     public void onValidationSucceeded() {
-        Toast.makeText(this, "Sign Up successfully!", Toast.LENGTH_SHORT).show();
+        String email = Emailtxt.getText().toString().trim();
+        String pass = Passwordtxt.getText().toString().trim();
 
-        Intent SignUp = new Intent(SignUp.this, HomePage.class);
-                startActivity(SignUp);
-                finish();
+        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    Toast.makeText(SignUp.this, "Sign Up successfully!", Toast.LENGTH_SHORT).show();
+                    Intent SignUp = new Intent(SignUp.this, HomePage.class);
+                    startActivity(SignUp);
+                    finish();
+                }else{
+                    Toast.makeText(SignUp.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 
     @Override
