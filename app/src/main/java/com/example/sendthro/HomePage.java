@@ -18,14 +18,14 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        signout = findViewById(R.id.signout);
+       // signout = findViewById(R.id.signout);
 
     }
 
-    public void SignOut (View view){
-        FirebaseAuth.getInstance().signOut();
-        Intent SignOut = new Intent(HomePage.this, WelcomeActivity.class);
-        startActivity(SignOut);
-        finish();
-    }
+//    public void SignOut (View view){
+//        FirebaseAuth.getInstance().signOut();
+//        Intent SignOut = new Intent(HomePage.this, WelcomeActivity.class);
+//        startActivity(SignOut);
+//        finish();
+//    }
 }

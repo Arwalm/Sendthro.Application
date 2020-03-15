@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Send Thro</string>
-        <string name="i_agree">I agree to the terms of use</string>
-        <string name="username">Username</string>
-        <string name="password">Password</string>
-        <string name="email">Email Address</string>
-        <string name="phone">Phone Number</string>
-        <string name="signup">Sign UP</string>
-        <string name="username_already_exists">Username already exists</string>
+    <string name="app_name">Sendthro</string>
+    <string name="i_agree">I agree to the terms of use</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Email Address</string>
+    <string name="phone">Phone Number</string>
+    <string name="signup">Sign UP</string>
+    <string name="username_already_exists">Username already exists</string>
 </resources>

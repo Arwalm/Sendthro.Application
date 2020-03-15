@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class WelcomeActivity extends AppCompatActivity {
 
-    Button signinbtn, signupbtn, skipbtn;
+    Button signinbtn, signupbtn, skipbtn, signout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class WelcomeActivity extends AppCompatActivity {
         signinbtn = (Button) findViewById(R.id.signinbtn);
         signupbtn = (Button) findViewById(R.id.signupbtn);
         skipbtn = (Button) findViewById(R.id.skipbtn);
+        signout = findViewById(R.id.signout);
 
         signinbtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -26,7 +29,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 Intent SignIn = new Intent(WelcomeActivity.this, SignIn.class);
                 startActivity(SignIn);
             }
-
         });
 
         signupbtn.setOnClickListener(new View.OnClickListener(){
@@ -45,7 +47,13 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(Skip);
                 finish();
             }
-
         });
+    }
+
+    public void SignOut (View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent signoutint = new Intent(WelcomeActivity.this, WelcomeActivity.class);
+        startActivity(signoutint);
+        finish();
     }
 }
