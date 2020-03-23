@@ -4,18 +4,18 @@
     <item
         android:id="@+id/nav_time"
         android:icon="@drawable/ic_time"
-        android:title="time" />
+        android:title="Scheduled" />
     <item
         android:id="@+id/nav_archive"
         android:icon="@drawable/ic_archive"
-        android:title="archive" />
+        android:title="Archived" />
     <item
         android:id="@+id/nav_calendar"
         android:icon="@drawable/ic_calendar"
-        android:title="calendar" />
+        android:title="Calendar" />
 
     <item
         android:id="@+id/nav_setting"
         android:icon="@drawable/ic_settings"
-        android:title="setting" />
+        android:title="Settings" />
 </menu>

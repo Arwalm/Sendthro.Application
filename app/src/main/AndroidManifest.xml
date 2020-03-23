@@ -10,8 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".testsettings"></activity>
-        <activity android:name=".smsschedule" />
         <activity android:name=".Newmessage" />
         <activity android:name=".testActivity" />
         <activity android:name=".PhoneVerification">

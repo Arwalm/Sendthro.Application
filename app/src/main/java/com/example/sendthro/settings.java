@@ -30,35 +30,35 @@ public class settings extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_sttings, container, false);
 
-        phone = getView().findViewById(R.id.profilePhone);
-        fullName = getView().findViewById(R.id.profileName);
-        email = getView().findViewById(R.id.profileEmail);
-        button = getView().findViewById(R.id.button);
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-        userId = fAuth.getCurrentUser().getUid();
+//        phone = getView().findViewById(R.id.profilePhone);
+//        fullName = getView().findViewById(R.id.profileName);
+//        email = getView().findViewById(R.id.profileEmail);
+//        button = getView().findViewById(R.id.button);
+//        fAuth = FirebaseAuth.getInstance();
+//        fStore = FirebaseFirestore.getInstance();
+//        userId = fAuth.getCurrentUser().getUid();
 
-        final DocumentReference documentReference = fStore.collection("users").document(userId);
-        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>(){
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                phone.setText(documentSnapshot.getString("phone"));
-                fullName.setText(documentSnapshot.getString("fName"));
-                email.setText(documentSnapshot.getString("email"));
-            }
-        });
+//        final DocumentReference documentReference = fStore.collection("users").document(userId);
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>(){
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                phone.setText(documentSnapshot.getString("phone"));
+//                fullName.setText(documentSnapshot.getString("fName"));
+//                email.setText(documentSnapshot.getString("email"));
+//            }
+//        });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getActivity().getApplicationContext(),SignIn.class));
-                getActivity().finish();
-            }
-        });
-    }
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseAuth.getInstance().signOut();
+//                startActivity(new Intent(getActivity().getApplicationContext(),SignIn.class));
+//                getActivity().finish();
+//            }
+//        });
+//
+//    }
 }
-
-
+}
 
 
