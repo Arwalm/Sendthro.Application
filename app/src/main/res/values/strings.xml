@@ -7,4 +7,10 @@
     <string name="phone">Phone Number</string>
     <string name="signup">Sign UP</string>
     <string name="username_already_exists">Username already exists</string>
+    <string name="msg">msg</string>
+    <string name="send">send</string>
+    <string name="reciver_number">reciver number...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
