@@ -10,10 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Newmessage" />
-        <activity android:name=".testActivity" />
-        <activity android:name=".PhoneVerification">
-            <intent-filter>
+        <activity android:name=".MainActivity">
+
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +22,8 @@
         <activity android:name=".SignUp" />
         <activity android:name=".SignIn" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Newmessage" />
+        <activity android:name=".testActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

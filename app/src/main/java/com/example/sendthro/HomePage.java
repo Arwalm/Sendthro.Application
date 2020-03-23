@@ -76,41 +76,34 @@ public class HomePage extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bnview);
-        bottomNavigationView.setOnNavigationItemSelectedListener(NavLi);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new scheduledmsg()).commit();
+                            Fragment selectedFragment = null;
 
-    }
+                            switch (item.getItemId()){
+                                case R.id.nav_time:
+                                    selectedFragment = new scheduledmsg();
+                                    break;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener NavLi =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+                                case R.id.nav_archive:
+                                    selectedFragment = new archivedmsg();
+                                    break;
 
-                    switch (item.getItemId()){
-                        case R.id.nav_time:
-                            selectedFragment = new scheduledmsg();
-                            break;
+                                case R.id.nav_calendar:
+                                    selectedFragment = new calander();
+                                    break;
 
-                        case R.id.nav_archive:
-                            selectedFragment = new archivedmsg();
-                            break;
+                                case R.id.nav_setting:
+                                    selectedFragment = new settings();
+                                    break;
+                            }
 
-                        case R.id.nav_calendar:
-                            selectedFragment = new calander();
-                            break;
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                    selectedFragment).commit();
 
-                        case R.id.nav_setting:
-                            selectedFragment = new settings();
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-
-                    return true;
-                }
-            };
-}
+                            return true;
+                        }
+                    });
+    }}
