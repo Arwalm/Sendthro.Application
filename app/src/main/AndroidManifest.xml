@@ -10,9 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".settingsActivity"></activity>
+        <activity android:name=".calenderActivity" />
+        <activity android:name=".archivedmsgActivity" />
+        <activity android:name=".ScheduledmsgActivity" />
         <activity android:name=".MainActivity">
-
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +26,7 @@
         <activity android:name=".SignIn" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".Newmessage" />
-        <activity android:name=".testActivity" >
+        <activity android:name=".testActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

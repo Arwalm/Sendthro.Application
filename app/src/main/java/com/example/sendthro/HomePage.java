@@ -3,7 +3,6 @@ package com.example.sendthro;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.ui.BottomNavigationViewKt;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -76,34 +75,75 @@ public class HomePage extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bnview);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(NavLi);
 
-                            Fragment selectedFragment = null;
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new scheduledmsg()).commit();
 
-                            switch (item.getItemId()){
-                                case R.id.nav_time:
-                                    selectedFragment = new scheduledmsg();
-                                    break;
+    }
 
-                                case R.id.nav_archive:
-                                    selectedFragment = new archivedmsg();
-                                    break;
+    private BottomNavigationView.OnNavigationItemSelectedListener NavLi =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
 
-                                case R.id.nav_calendar:
-                                    selectedFragment = new calander();
-                                    break;
+                    switch (item.getItemId()){
+                        case R.id.nav_time:
+                            selectedFragment = new scheduledmsg();
+                            break;
 
-                                case R.id.nav_setting:
-                                    selectedFragment = new settings();
-                                    break;
-                            }
+                        case R.id.nav_archive:
+                            selectedFragment = new archivedmsg();
+                            break;
 
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                    selectedFragment).commit();
+                        case R.id.nav_calendar:
+                            selectedFragment = new calender();
+                            break;
 
-                            return true;
-                        }
-                    });
-    }}
+                        case R.id.nav_setting:
+                            selectedFragment = new settings();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
+                    return true;
+                }
+            };
+}
+
+
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bnview);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//
+//                    switch (item.getItemId()){
+//                                case R.id.nav_time:
+//                                    Intent N1 = new Intent(HomePage.this, ScheduledmsgActivity.class);
+//                                    startActivity(N1);
+//                                    break;
+//
+//                                case R.id.nav_archive:
+//                                    Intent N2 = new Intent(HomePage.this, archivedmsgActivity.class);
+//                                    startActivity(N2);
+//                                    break;
+//
+//                                case R.id.nav_calendar:
+//                                    Intent N3 = new Intent(HomePage.this, calenderActivity.class);
+//                                    startActivity(N3);
+//                                    break;
+//
+//                                case R.id.nav_setting:
+//                                    Intent N4 = new Intent(HomePage.this, settingsActivity.class);
+//                                    startActivity(N4);
+//                                    break;
+//                            }
+//
+//                            return false;
+//                        }
+//                    });
+//    }}
