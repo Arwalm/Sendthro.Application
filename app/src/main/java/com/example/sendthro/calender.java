@@ -26,68 +26,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class calender extends LinearLayout {
+public class calender extends Fragment{
 
-    ImageButton Nextbutton, Previousebutton;
-    TextView CurrentDate;
-    GridView calendarGridView ;
+    @Nullable
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_calander, container, false);
+    }}
 
-    private static final int MAX_CALENDAR_DAYES = 42;
-    Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
-    Context context;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM yyyy",Locale.ENGLISH);
-    SimpleDateFormat monthFormat = new SimpleDateFormat("MMM", Locale.ENGLISH);
-    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.ENGLISH);
-
-    List<Date> dates = new ArrayList<>();
-    List<Events> eventsList = new ArrayList<>();
-
-
-    public calender(Context context) {
-        super(context);
-    }
-
-    public calender(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        this.context = context;
-        IntializeLayout();
-
-        Previousebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendar.add(Calendar.MONTH, -1);
-                SetUpCalender();
-            }
-        });
-
-        Nextbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendar.add(Calendar.MONTH, 1);
-                SetUpCalender();
-            }
-        });
-    }
-
-
-    public calender(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-
-    private void IntializeLayout(){
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.fragment_calander, this);
-        Nextbutton = view.findViewById(R.id.nextButton);
-        Previousebutton = view.findViewById(R.id.previousButton);
-        CurrentDate = view.findViewById(R.id.currentDate);
-        calendarGridView = view.findViewById(R.id.calendarGridView);
-
-    }
-
-    private void SetUpCalender(){
-        String currentDate = dateFormat.format(calendar.getTime());
-        CurrentDate.setText(currentDate);
-
-    }
-}

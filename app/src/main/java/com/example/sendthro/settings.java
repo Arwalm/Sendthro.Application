@@ -1,64 +1,83 @@
 package com.example.sendthro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import android.content.Intent;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 public class settings extends Fragment {
 
-    TextView fullName, email, phone;
-    FirebaseAuth fAuth;
+    FirebaseFirestore firestore;
+    TextView emailedit, phoneedit , useredit;
+    ImageView signout;
+
+    FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
     String userId;
-    Button button;
 
     @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_sttings, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState){
 
-//        phone = getView().findViewById(R.id.profilePhone);
-//        fullName = getView().findViewById(R.id.profileName);
-//        email = getView().findViewById(R.id.profileEmail);
-//        button = getView().findViewById(R.id.button);
-//        fAuth = FirebaseAuth.getInstance();
-//        fStore = FirebaseFirestore.getInstance();
-//        userId = fAuth.getCurrentUser().getUid();
+        View view = inflater.inflate(R.layout.fragment_sttings, container, false);
+        firestore = FirebaseFirestore.getInstance();
+        emailedit = view.findViewById(R.id.emailedit);
+        phoneedit = view.findViewById(R.id.phoneedit);
+        useredit = view.findViewById(R.id.useredit);
 
-//        final DocumentReference documentReference = fStore.collection("users").document(userId);
-//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>(){
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                phone.setText(documentSnapshot.getString("phone"));
-//                fullName.setText(documentSnapshot.getString("fName"));
-//                email.setText(documentSnapshot.getString("email"));
-//            }
-//        });
+        signout = view.findViewById(R.id.signout);
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                FirebaseAuth.getInstance().signOut();
+                Intent signoutint = new Intent(getActivity(), WelcomeActivity.class);
+                startActivity(signoutint);
+                getActivity().finish();
+            }
+        });
+        firebaseAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userId = firebaseAuth.getCurrentUser().getUid();
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(getActivity().getApplicationContext(),SignIn.class));
-//                getActivity().finish();
-//            }
-//        });
-//
-//    }
+        DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                phoneedit.setText(documentSnapshot.getString("Phone Number"));
+                useredit.setText(documentSnapshot.getString("Username"));
+                emailedit.setText(documentSnapshot.getString("Email Address"));
+            }
+        });
+
+
+        return view;
+
+    }
+
 }
-}
+
 
 

@@ -52,7 +52,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void SignOut (View view) {
         FirebaseAuth.getInstance().signOut();
-        Intent signoutint = new Intent(WelcomeActivity.this, WelcomeActivity.class);
+        Intent signoutint = new Intent(WelcomeActivity.this, HomePage.class);
         startActivity(signoutint);
         finish();
     }

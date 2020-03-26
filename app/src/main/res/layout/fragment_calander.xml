@@ -5,116 +5,127 @@
     android:id="@+id/custom_calander"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="30dp"
-        android:paddingBottom="10dp"
-        android:background="@color/colorPrimary">
-        
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/previousButton"
-            android:background="@drawable/previousicon"
-            android:layout_margin="5dp"/>
-
-        <TextView
-            android:id="@+id/currentDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="currentDate"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:textSize="21sp"
-            android:layout_weight="3"/>
 
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/nextButton"
-            android:background="@drawable/nexticon"
-            android:layout_margin="5dp"/>
-    </LinearLayout>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:background="@color/colorAccent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="S"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="M"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="T"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="W"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="T"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:textStyle="bold"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="F"
-            android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/calendarGridView"
-        android:numColumns="7"/>
 
 </LinearLayout>
+
+
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingTop="30dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:background="@color/colorPrimary">-->
+<!--        -->
+<!--        <ImageButton-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:id="@+id/previousButton"-->
+<!--            android:background="@drawable/previousicon"-->
+<!--            android:layout_margin="5dp"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/currentDate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:text="currentDate"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="21sp"-->
+<!--            android:layout_weight="3"/>-->
+
+
+<!--        <ImageButton-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:id="@+id/nextButton"-->
+<!--            android:background="@drawable/nexticon"-->
+<!--            android:layout_margin="5dp"/>-->
+<!--    </LinearLayout>-->
+<!--    -->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingTop="4dp"-->
+<!--        android:paddingBottom="4dp"-->
+<!--        android:background="@color/colorAccent">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="S"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="M"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="T"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="W"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="T"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"/>-->
+
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="F"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textStyle="bold"/>-->
+
+<!--    </LinearLayout>-->
+
+<!--    <GridView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/calendarGridView"-->
+<!--        android:numColumns="7"/>-->
+
+<!--</LinearLayout>-->
