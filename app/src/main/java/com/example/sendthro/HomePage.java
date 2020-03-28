@@ -98,7 +98,7 @@ public class HomePage extends AppCompatActivity {
                             break;
 
                         case R.id.nav_calendar:
-                            selectedFragment = new calender();
+                            selectedFragment = new CalendarFragment();
                             break;
 
                         case R.id.nav_setting:

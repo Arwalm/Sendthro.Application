@@ -50,8 +50,11 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
     implementation 'com.getbase:floatingactionbutton:1.10.1'
-    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+    implementation 'com.jonaswanke.calendar:calendar:0.1.1'
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+    implementation 'com.jonaswanke.calendar:calendar:0.1.1'
 
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 
 }
 

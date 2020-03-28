@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<style name="CustomCalendarMonth" parent="AppTheme">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>
