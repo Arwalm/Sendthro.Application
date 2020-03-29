@@ -4,6 +4,11 @@ android {
     compileSdkVersion 28
 
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
     defaultConfig {
         applicationId "com.example.sendthro"
         minSdkVersion 21
@@ -53,8 +58,12 @@ dependencies {
     implementation 'com.jonaswanke.calendar:calendar:0.1.1'
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
     implementation 'com.jonaswanke.calendar:calendar:0.1.1'
-
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
+    implementation 'com.wdullaer:materialdatetimepicker:1.2.1'
+    implementation 'com.bignerdranch.android:recyclerview-multiselect:+'
+    implementation 'com.wrapp.floatlabelededittext:library:0.0.6'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
 }
 

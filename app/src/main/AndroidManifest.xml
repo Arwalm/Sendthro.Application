@@ -10,16 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".UserEventsActivity"/>
+        <activity android:name=".CreateSmsScheduleActivity"></activity>
+        <activity android:name=".WhatsAppScheduler" />
+        <activity android:name=".EmailScheduler" />
+        <activity android:name=".SmsScheduler" />
+        <activity android:name=".Alarm_items" />
+        <activity android:name=".AddEventActivity" />
+        <activity android:name=".UserEventsActivity" />
         <activity android:name=".CalendarFragment" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".HomePage" />
         <activity android:name=".SignUp" />
@@ -27,26 +30,26 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".Newmessage" />
         <activity android:name=".testActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
-
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"
-                     tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.MEDIA_CONTENT_CONTROL"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
     <uses-permission android:name="android.permission.CAMERA2" />
 
 </manifest>

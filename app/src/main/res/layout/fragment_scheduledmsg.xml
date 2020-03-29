@@ -1,15 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:id="@+id/fragment_scheduledmsg">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="0dp"
+            android:gravity="center"
+            android:text="Scheduled Messages"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sms"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="351dp"
-        android:text="Scheduled msg" />
+        android:layout_marginTop="75dp"
+        android:clickable="true"
+        android:onClick="SMS_Msg">
+
+            <TextView
+                android:id="@+id/sms_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text=">  SMS Scheduler"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:clickable="true"
+        android:onClick="emai_Msg">
+
+            <TextView
+                android:id="@+id/email_text"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=">  Email Scheduler"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/whatsapp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="224dp">
+
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:id="@+id/whatsapp_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=">  WhatsApp Scheduler"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
 </RelativeLayout>

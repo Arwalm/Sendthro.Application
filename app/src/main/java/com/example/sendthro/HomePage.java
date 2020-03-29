@@ -1,9 +1,5 @@
 package com.example.sendthro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,6 +8,10 @@ import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 public class HomePage extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class HomePage extends AppCompatActivity {
         smsfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Do = new Intent(HomePage.this, Newmessage.class);
+                Intent Do = new Intent(HomePage.this, CreateSmsScheduleActivity.class);
                 startActivity(Do);
             }
         });
