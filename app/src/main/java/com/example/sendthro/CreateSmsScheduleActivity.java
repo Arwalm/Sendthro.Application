@@ -116,6 +116,7 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
         }
     }
 
+
     @OnClick(R.id.relativeLayoutSelectDate)
     public void getDate() {
         // initialize
