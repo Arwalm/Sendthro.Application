@@ -1,21 +1,14 @@
 package com.example.sendthro;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -31,6 +24,7 @@ public class settings extends Fragment {
     FirebaseFirestore firestore;
     TextView emailedit, phoneedit , useredit;
     ImageView signout;
+    Button chngpass;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
@@ -39,7 +33,7 @@ public class settings extends Fragment {
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState){
+                             @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_sttings, container, false);
         firestore = FirebaseFirestore.getInstance();
@@ -47,11 +41,12 @@ public class settings extends Fragment {
         phoneedit = view.findViewById(R.id.phoneedit);
         useredit = view.findViewById(R.id.useredit);
 
+
+
         signout = view.findViewById(R.id.signout);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent signoutint = new Intent(getActivity(), WelcomeActivity.class);
                 startActivity(signoutint);
@@ -71,13 +66,21 @@ public class settings extends Fragment {
                 emailedit.setText(documentSnapshot.getString("Email Address"));
             }
         });
+        chngpass = view.findViewById(R.id.chngpass);
+        chngpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getActivity(), ChangePassword.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
 
 
         return view;
 
     }
 
+
 }
-
-
-

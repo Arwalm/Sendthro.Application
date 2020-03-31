@@ -2,7 +2,7 @@ package com.example.sendthro;
 
 import java.io.Serializable;
 
-class Sms implements Serializable {
+public class Sms implements Serializable {
     public String id;
     public String number;
     public String message;

@@ -12,7 +12,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-class SmsArrayAdapter extends BaseAdapter {
+public class SmsArrayAdapter extends BaseAdapter {
 
     private Context context;
     private List<Sms> smsArrayList;

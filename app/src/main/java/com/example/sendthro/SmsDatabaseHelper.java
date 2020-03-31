@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-class SmsDatabaseHelper extends SQLiteOpenHelper {
+public class SmsDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SMS_TABLE_NAME = "sms_schedules";
 

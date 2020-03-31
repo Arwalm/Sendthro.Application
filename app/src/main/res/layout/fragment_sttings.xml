@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="229dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:background="@color/colorPrimary">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="229dp"
-            android:layout_alignParentStart="true"
+        <ImageView
+            android:id="@+id/signout"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:onClick="SignOut"
+            app:srcCompat="@drawable/ic_logout"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="375dp"
+            tools:layout_editor_absoluteY="6dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="14dp"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="serif-monospace"
+            android:gravity="center"
+            android:lineSpacingExtra="8sp"
+            android:text="PROFILE"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="212dp"
             android:layout_marginStart="0dp"
-            android:background="@color/colorPrimary">
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.521"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/app_icon"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="-32dp" />
 
-            <ImageView
-                android:id="@+id/signout"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="6dp"
-                android:onClick="SignOut"
-                app:srcCompat="@drawable/ic_logout"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="375dp"
-                tools:layout_editor_absoluteY="6dp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="14dp"
-                android:backgroundTint="@color/colorAccent"
-                android:fontFamily="serif-monospace"
-                android:gravity="center"
-                android:lineSpacingExtra="8sp"
-                android:text="PROFILE"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:typeface="serif" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="212dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.521"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/app_icon"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="-32dp" />
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 
     <RelativeLayout
@@ -142,7 +142,17 @@
             android:backgroundTint="@color/colorAccent"
             android:ems="10" />
 
-
+        <Button
+            android:id="@+id/chngpass"
+            android:layout_width="256dp"
+            android:layout_height="36dp"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="126dp"
+            android:background="@drawable/rounded_button"
+            android:text="Change password" />
     </RelativeLayout>
 
 

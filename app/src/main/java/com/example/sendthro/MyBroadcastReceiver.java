@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
-class MyBroadcastReceiver extends BroadcastReceiver {
+
+public class MyBroadcastReceiver extends BroadcastReceiver {
+
     String actionUriSMSSend = "com.scheduler.action.SMS_SEND";
     String actionUriEmailNotification = "com.scheduler.action.EMAIL_NOTIFICATION";
     public static final int NOTIFICATION_ID = 1;
@@ -82,7 +84,7 @@ class MyBroadcastReceiver extends BroadcastReceiver {
             PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                     emailActivity, PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                    .setSmallIcon(R.drawable.ic_email)
+                    .setSmallIcon(R.drawable.ic_emailmsg)
                     .setContentTitle("Scheduler")
                     .setContentText("E-mail Schedule alert, Tap to open");
             mBuilder.setContentIntent(contentIntent);

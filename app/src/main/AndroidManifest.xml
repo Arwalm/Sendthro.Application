@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".CreateSmsScheduleActivity"></activity>
+        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".CreateSmsScheduleActivity" />
         <activity android:name=".WhatsAppScheduler" />
         <activity android:name=".EmailScheduler" />
         <activity android:name=".SmsScheduler" />
@@ -21,6 +22,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
