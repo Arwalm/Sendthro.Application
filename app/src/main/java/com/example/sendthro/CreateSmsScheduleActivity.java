@@ -62,11 +62,13 @@ public class CreateSmsScheduleActivity extends AppCompatActivity
         databaseHelper = new SmsDatabaseHelper(this);
     }
 
+
     @OnClick(R.id.btnSetSchedule)
     public void setSchedule() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_REQUEST_SEND_SMS);
             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
+
         } else {
             setSmsSchedule();
         }

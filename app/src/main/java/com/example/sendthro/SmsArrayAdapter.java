@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 public class SmsArrayAdapter extends BaseAdapter {
 
+
     private Context context;
     private List<Sms> smsArrayList;
     SmsDatabaseHelper databaseHelper;

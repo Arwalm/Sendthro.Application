@@ -1,5 +1,6 @@
 package com.example.sendthro;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import androidx.fragment.app.Fragment;
 
 public class scheduledmsg extends Fragment {
 
+
     RelativeLayout sms, email ,whatsapp;
+    private static Context context;
 
     @Nullable
     @Override
@@ -49,6 +52,10 @@ public class scheduledmsg extends Fragment {
         });
 
         return v;
+    }
+
+    public static Context getAppContext() {
+        return scheduledmsg.context;
     }
 
 }
