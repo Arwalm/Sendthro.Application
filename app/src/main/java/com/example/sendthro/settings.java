@@ -24,7 +24,7 @@ public class settings extends Fragment {
     FirebaseFirestore firestore;
     TextView emailedit, phoneedit , useredit;
     ImageView signout;
-    Button chngpass;
+    Button chngpass , signin;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
@@ -40,7 +40,9 @@ public class settings extends Fragment {
         emailedit = view.findViewById(R.id.emailedit);
         phoneedit = view.findViewById(R.id.phoneedit);
         useredit = view.findViewById(R.id.useredit);
-
+        chngpass = view.findViewById(R.id.chngpass);
+        signin = view.findViewById(R.id.signin);
+        signin.setVisibility(View.INVISIBLE);
 
 
         signout = view.findViewById(R.id.signout);
@@ -55,18 +57,26 @@ public class settings extends Fragment {
         });
         firebaseAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        userId = firebaseAuth.getCurrentUser().getUid();
 
-        DocumentReference documentReference = fStore.collection("users").document(userId);
-        documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
-                phoneedit.setText(documentSnapshot.getString("Phone Number"));
-                useredit.setText(documentSnapshot.getString("Username"));
-                emailedit.setText(documentSnapshot.getString("Email Address"));
-            }
-        });
-        chngpass = view.findViewById(R.id.chngpass);
+        if(firebaseAuth.getCurrentUser() != null ) {
+            userId = firebaseAuth.getCurrentUser().getUid();
+
+            DocumentReference documentReference = fStore.collection("users").document(userId);
+            documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                    phoneedit.setText(documentSnapshot.getString("Phone Number"));
+                    useredit.setText(documentSnapshot.getString("Username"));
+                    emailedit.setText(documentSnapshot.getString("Email Address"));
+                }
+            });
+        }
+
+        if(firebaseAuth.getCurrentUser() == null ) {
+            chngpass.setVisibility(View.INVISIBLE);
+            signin.setVisibility(View.VISIBLE);
+        }
+
         chngpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +88,13 @@ public class settings extends Fragment {
         });
 
 
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getActivity() , WelcomeActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
 
     }

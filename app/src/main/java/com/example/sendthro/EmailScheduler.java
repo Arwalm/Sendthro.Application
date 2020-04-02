@@ -18,7 +18,6 @@ import butterknife.OnClick;
 
 public class EmailScheduler extends AppCompatActivity {
 
-
     @BindView(R.id.emailListView)
     public ListView emailListView;
     @BindView(R.id.textViewNoSchedule)
@@ -33,7 +32,7 @@ public class EmailScheduler extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.emailscheduler);
+        setContentView(R.layout.activity_email_scheduler);
         ButterKnife.bind(this);
 
         databaseHelper = new EmailDatabaseHelper(this);
@@ -53,6 +52,7 @@ public class EmailScheduler extends AppCompatActivity {
 
     @OnClick(R.id.fab)
     public void fabClick() {
-        startActivity(new Intent(this, CreateEmailScheduleActivity.class));
+        Intent intent = new Intent(this, CreateEmailScheduleActivity.class);
+        startActivity(intent);
     }
 }

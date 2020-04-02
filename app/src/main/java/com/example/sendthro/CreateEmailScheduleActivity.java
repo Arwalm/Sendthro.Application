@@ -1,19 +1,15 @@
 package com.example.sendthro;
 
-import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.style.RelativeSizeSpan;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,101 +20,37 @@ import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 import java.util.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CreateSmsScheduleActivity extends AppCompatActivity
-        implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    @BindView(R.id.btnSetSchedule)
-    Button btnSetSchedule;
-    @BindView(R.id.textViewDate)
-    TextView textViewDate;
+public class CreateEmailScheduleActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+
     @BindView(R.id.textViewTime)
     TextView textViewTime;
-    @BindView(R.id.relativeLayoutSelectTime)
-    RelativeLayout relativeLayoutSelectTime;
-    @BindView(R.id.relativeLayoutSelectDate)
-    RelativeLayout relativeLayoutSelectDate;
-    Calendar calendar;
-    @BindView(R.id.editTextMessage)
-    EditText editTextMessage;
-    @BindView(R.id.editTextToRecipient)
-    EditText editTextToRecipient;
+    @BindView(R.id.textViewDate)
+    TextView textViewDate;
+    @BindView(R.id.editTextRecipient)
+    EditText editTextRecipient;
+    @BindView(R.id.editTextSubject)
+    EditText editTextSubject;
+    @BindView(R.id.editTextBody)
+    EditText editTextBody;
 
-    private static final int PERMISSIONS_REQUEST_SEND_SMS = 101;
+
     int mHour, mMinute, mYear, mMonth, mDay;
-    SmsDatabaseHelper databaseHelper;
+    Calendar calendar;
+    EmailDatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_sms_schedule);
+        setContentView(R.layout.activity_create_email_schedule);
         ButterKnife.bind(this);
+        databaseHelper = new EmailDatabaseHelper(this);
         calendar = Calendar.getInstance();
-
-        databaseHelper = new SmsDatabaseHelper(this);
     }
-
-
-    @OnClick(R.id.btnSetSchedule)
-    public void setSchedule() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_REQUEST_SEND_SMS);
-            //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
-
-        } else {
-            setSmsSchedule();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == PERMISSIONS_REQUEST_SEND_SMS) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission is granted
-                setSmsSchedule();
-            } else {
-                Toast.makeText(this, "Until you grant the permission, we cannot set schedule", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void setSmsSchedule() {
-        String message = editTextMessage.getText().toString();
-        String contactNumber = editTextToRecipient.getText().toString();
-
-        Bundle bundle = new Bundle();
-        bundle.putString("number", contactNumber);
-        bundle.putString("message", message);
-
-        Intent intent = new Intent(this, MyBroadcastReceiver.class);
-        intent.putExtras(bundle);
-        String actionUri = "com.scheduler.action.SMS_SEND";
-        intent.setAction(actionUri);
-
-        int _id = (int) System.currentTimeMillis();
-        //Long time = new GregorianCalendar().getTimeInMillis() + 60 * 1000;
-        calendar.set(mYear, mMonth, mDay, mHour, mMinute);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, _id, intent, 0);
-
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        Toast.makeText(this, "Scheduled", Toast.LENGTH_LONG).show();
-
-        if (databaseHelper.addSms(_id, contactNumber, message, textViewTime.getText().toString(),
-                textViewDate.getText().toString(), (int) calendar.getTimeInMillis())) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
-            finish();
-            startActivity(new Intent(this, SmsScheduler.class));
-        } else {
-            Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
     @OnClick(R.id.relativeLayoutSelectDate)
     public void getDate() {
@@ -211,6 +143,36 @@ public class CreateSmsScheduleActivity extends AppCompatActivity
         calendar.set(Calendar.HOUR, hourOfDay);
     }
 
+    @OnClick(R.id.btnSetSchedule)
+    public void setSchedule() {
+        String recipient = editTextRecipient.getText().toString().trim();
+        String subject = editTextSubject.getText().toString().trim();
+        String body = editTextBody.getText().toString().trim();
+
+        if (!TextUtils.isEmpty(recipient) && !TextUtils.isEmpty(subject) && !TextUtils.isEmpty(body)) {
+            calendar.set(mYear, mMonth, mDay, mHour, mMinute);
+            int _id = (int) System.currentTimeMillis();
+            Intent intent = new Intent(this, MyBroadcastReceiver.class);
+            String strAction = "com.scheduler.action.EMAIL_SEND";
+            intent.putExtra("id", _id);
+            intent.setAction(strAction);
+
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, _id, intent, 0);
+
+            AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+            if (databaseHelper.addEmail(_id, recipient, subject, body, textViewTime.getText().toString(),
+                    textViewDate.getText().toString(), (int) calendar.getTimeInMillis())) {
+                Toast.makeText(this, "Scheduled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show();
+            }
+            this.onBackPressed();
+        } else {
+            Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
         mHour = hourOfDay;
@@ -256,6 +218,4 @@ public class CreateSmsScheduleActivity extends AppCompatActivity
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.HOUR, hourOfDay);
     }
-    }
-
-
+}

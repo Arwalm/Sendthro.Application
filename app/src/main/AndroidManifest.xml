@@ -12,6 +12,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".ChangePassword"></activity>
         <activity android:name=".CreateSmsScheduleActivity" />
+        <activity android:name=".CreateEmailScheduleActivity" />
         <activity android:name=".WhatsAppScheduler" />
         <activity android:name=".EmailScheduler" />
         <activity android:name=".SmsScheduler" />
@@ -44,6 +45,7 @@
     </application>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

@@ -38,7 +38,7 @@ public class scheduledmsg extends Fragment {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent emailIntent = new Intent(getActivity(), EmailSchedulerActivity.class);
+                Intent emailIntent = new Intent(getActivity(), EmailScheduler.class);
                 startActivity(emailIntent);
             }
         });
