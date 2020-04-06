@@ -1,17 +1,14 @@
 package com.example.sendthro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.CheckBox;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,6 +37,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUp extends AppCompatActivity implements Validator.ValidationListener {
 
@@ -95,7 +95,6 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
                 startActivity(Skip);
                 finish();
             }
-
         });
 
         SignIntxt.setOnClickListener(new View.OnClickListener(){

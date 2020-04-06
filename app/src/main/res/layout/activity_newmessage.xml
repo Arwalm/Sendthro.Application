@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Newmessage">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/To"
@@ -23,7 +22,7 @@
         tools:layout_editor_absoluteY="160dp" />
 
     <EditText
-        android:id="@+id/toText"
+        android:id="@+id/editTextToRecipient"
         android:layout_width="318dp"
         android:layout_height="28dp"
         android:layout_alignParentTop="true"
@@ -89,7 +88,7 @@
         tools:layout_editor_absoluteY="160dp" />
 
     <EditText
-        android:id="@+id/yourmessage"
+        android:id="@+id/editTextMessage"
         android:layout_width="match_parent"
         android:layout_height="158dp"
         android:layout_alignParentStart="true"
@@ -116,7 +115,7 @@
         tools:layout_editor_absoluteY="401dp" />
 
     <TextView
-        android:id="@+id/scheduledate"
+        android:id="@+id/textViewDate"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -143,7 +142,7 @@
         tools:ignore="DuplicateIds" />
 
     <TextView
-        android:id="@+id/scheduleTime"
+        android:id="@+id/textViewTime"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -171,7 +170,7 @@
         tools:ignore="DuplicateIds" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSetSchedule"
         android:layout_width="240dp"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"

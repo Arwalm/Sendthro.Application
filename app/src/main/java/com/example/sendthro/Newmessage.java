@@ -1,20 +1,16 @@
 package com.example.sendthro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -26,8 +22,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-
 import java.util.Calendar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static android.R.style.Theme_Holo_Light_Dialog_MinWidth;
 
@@ -50,11 +47,11 @@ public class Newmessage extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_newmessage);
-            mDisplayDate = (TextView) findViewById(R.id.scheduledate);
-            mDisplayTime = (TextView) findViewById(R.id.scheduleTime);
+            mDisplayDate = (TextView) findViewById(R.id.textViewDate);//date
+            mDisplayTime = (TextView) findViewById(R.id.textViewTime);//time
             attachment = (ImageView) findViewById(R.id.attachment);
             addto = (Button) findViewById(R.id.addto);
-            toText = (EditText) findViewById(R.id.toText);
+            toText = (EditText) findViewById(R.id.editTextToRecipient);//to edit
 
             mDisplayDate.setOnClickListener(new View.OnClickListener() {
                 @Override

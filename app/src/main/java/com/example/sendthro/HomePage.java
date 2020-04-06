@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +16,14 @@ import androidx.fragment.app.Fragment;
 
 public class HomePage extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        mAuth = FirebaseAuth.getInstance();
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton4);
         FloatingActionButton smsfab = (FloatingActionButton) findViewById(R.id.smsfab);
@@ -50,8 +55,13 @@ public class HomePage extends AppCompatActivity {
         smsfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Do = new Intent(HomePage.this, CreateSmsScheduleActivity.class);
-                startActivity(Do);
+                if (mAuth.getCurrentUser() == null) {
+                    Intent NewUSer = new Intent(HomePage.this, WelcomeActivity.class);
+                    startActivity(NewUSer);
+                } else {
+                    Intent Do = new Intent(HomePage.this, CreateSmsScheduleActivity.class);
+                    startActivity(Do);
+                }
             }
         });
 
@@ -59,8 +69,13 @@ public class HomePage extends AppCompatActivity {
         wtsfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Do = new Intent(HomePage.this, Newmessage.class);
-                startActivity(Do);
+                if (mAuth.getCurrentUser() == null) {
+                    Intent NewUSer = new Intent(HomePage.this, WelcomeActivity.class);
+                    startActivity(NewUSer);
+                } else {
+                    Intent Do = new Intent(HomePage.this, Newmessage.class);
+                    startActivity(Do);
+                }
             }
         });
 
@@ -68,8 +83,13 @@ public class HomePage extends AppCompatActivity {
         emailfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Do = new Intent(HomePage.this, Newmessage.class);
-                startActivity(Do);
+                if (mAuth.getCurrentUser() == null) {
+                    Intent NewUSer = new Intent(HomePage.this, WelcomeActivity.class);
+                    startActivity(NewUSer);
+                } else {
+                    Intent Do = new Intent(HomePage.this, Newmessage.class);
+                    startActivity(Do);
+                }
             }
         });
 

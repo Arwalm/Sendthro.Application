@@ -20,6 +20,7 @@
         <activity android:name=".AddEventActivity" />
         <activity android:name=".UserEventsActivity" />
         <activity android:name=".CalendarFragment" />
+        <activity android:name=".SmsUpdateSchedulerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -25,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-class SmsUpdateSchedulerActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class SmsUpdateSchedulerActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     @BindView(R.id.btnUpdateSchedule)
     Button btnUpdateSchedule;
@@ -178,51 +178,50 @@ class SmsUpdateSchedulerActivity extends AppCompatActivity implements DatePicker
         calendar.set(Calendar.MONTH, monthOfYear);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
     }
-//        @Override
-//        public void onTimeSet (TimePickerDialog view,int hourOfDay, int minute, int second){
-//            mHour = hourOfDay;
-//            mMinute = minute;
-//
-//            calendar.set(Calendar.SECOND, 0);
-//            calendar.set(Calendar.MINUTE, minute);
-//            calendar.set(Calendar.HOUR, hourOfDay);
-//
-//            calendar.set(Calendar.AM_PM, Calendar.AM);
-//
-//            String str;
-//            if (calendar.get(Calendar.AM_PM) == Calendar.AM)
-//                str = "AM";
-//            else
-//                str = "PM";
-//
-//            String hours;
-//            if (calendar.get(Calendar.HOUR) > 9) {
-//                hours = String.valueOf(calendar.get(Calendar.HOUR));
-//            } else {
-//                hours = "0" + String.valueOf(calendar.get(Calendar.HOUR));
-//            }
-//
-//            String minutes;
-//            if (minute > 9) {
-//                minutes = String.valueOf(minute);
-//            } else {
-//                minutes = "0" + String.valueOf(minute);
-//            }
-//            if (hours.equalsIgnoreCase("00")) {
-//                hours = "12";
-//            }
-//
-//            String selectedTime = hours + ":" + minutes
-//                    + "  " + str;
-//
-//            SpannableString ss2 = new SpannableString(selectedTime);
-//            ss2.setSpan(new RelativeSizeSpan(1.5f), 0, 5, 0);
-//
-//            textViewTime.setText(ss2);
-//            calendar.set(Calendar.SECOND, 0);
-//            calendar.set(Calendar.MINUTE, minute);
-//            calendar.set(Calendar.HOUR, hourOfDay);
-//        }
+        public void onTimeSet (TimePickerDialog view,int hourOfDay, int minute, int second){
+            mHour = hourOfDay;
+            mMinute = minute;
+
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MINUTE, minute);
+            calendar.set(Calendar.HOUR, hourOfDay);
+
+            calendar.set(Calendar.AM_PM, Calendar.AM);
+
+            String str;
+            if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+                str = "AM";
+            else
+                str = "PM";
+
+            String hours;
+            if (calendar.get(Calendar.HOUR) > 9) {
+                hours = String.valueOf(calendar.get(Calendar.HOUR));
+            } else {
+                hours = "0" + String.valueOf(calendar.get(Calendar.HOUR));
+            }
+
+            String minutes;
+            if (minute > 9) {
+                minutes = String.valueOf(minute);
+            } else {
+                minutes = "0" + String.valueOf(minute);
+            }
+            if (hours.equalsIgnoreCase("00")) {
+                hours = "12";
+            }
+
+            String selectedTime = hours + ":" + minutes
+                    + "  " + str;
+
+            SpannableString ss2 = new SpannableString(selectedTime);
+            ss2.setSpan(new RelativeSizeSpan(1.5f), 0, 5, 0);
+
+            textViewTime.setText(ss2);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.MINUTE, minute);
+            calendar.set(Calendar.HOUR, hourOfDay);
+        }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {

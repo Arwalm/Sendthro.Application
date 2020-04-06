@@ -72,26 +72,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/signout"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="150dp"
-        android:layout_height="31dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/rounded_button"
-        android:fontFamily="sans-serif-condensed"
-        android:onClick="SignOut"
-        android:text="SIGN OUT"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#B2FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.902" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
