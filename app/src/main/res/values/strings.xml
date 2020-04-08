@@ -12,5 +12,46 @@
     <string name="reciver_number">reciver number...</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Reminder Strings -->
+
+    <string name="title_activity_add_reminder">Add Event</string>
+    <string name="title_activity_edit_reminder">Edit Event</string>
+    <string name="title_activity_licenses">Licenses</string>
+
+    <string name="add_reminder">Event</string>
+    <string name="details">Details</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="repeat">Repeat</string>
+    <string name="repeat_off">Off</string>
+    <string name="repeat_no">Repetition Interval </string>
+    <string name="repeat_type">Type of Repetitions</string>
+
+    <string name="action_discard_reminder">Discard Event</string>
+    <string name="action_save_reminder">Save Event</string>
+
+    <string name="editor_activity_title_new_reminder">Add Event Details</string>
+    <string name="editor_activity_title_edit_reminder">Edit Event</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+    <string name="discard">Discard</string>
+
+    <string name="keep_editing">Keep Editing</string>
+    <string name="delete_dialog_msg">Delete this Event?</string>
+
+    <string name="delete">Delete</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="editor_delete_reminder_successful">Event deleted</string>
+
+    <string name="editor_delete_reminder_failed">Error with deleting Event</string>
+
+    <string name="editor_insert_reminder_successful">Event saved</string>
+
+    <string name="editor_insert_reminder_failed">Error with saving Event</string>
+
+    <string name="editor_update_reminder_successful">Event updated</string>
+
+    <string name="editor_update_reminder_failed">Error with updating Event</string>
+
+    <string name="reminder_title">Event Reminder</string>
 </resources>

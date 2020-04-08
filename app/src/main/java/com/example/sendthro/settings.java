@@ -1,4 +1,5 @@
 package com.example.sendthro;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,6 +31,10 @@ public class settings extends Fragment {
     FirebaseFirestore fStore;
     String userId;
 
+//    private Switch darkmode;
+public settings(){
+    //Required empty Constructor
+}
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
@@ -43,9 +48,35 @@ public class settings extends Fragment {
         chngpass = view.findViewById(R.id.chngpass);
         signin = view.findViewById(R.id.signin);
         signin.setVisibility(View.INVISIBLE);
-
-
         signout = view.findViewById(R.id.signout);
+        firebaseAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+//        darkmode= view.findViewById(R.id.darkmod);
+//
+//
+//        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+//            getActivity().setTheme(R.style.darktheme);
+//        }
+//        else getActivity().setTheme(R.style.AppTheme);
+//
+//
+//        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+//            darkmode.setChecked(true);
+//        }
+//
+//        darkmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//                    restartApp();
+//                } else {
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//                    restartApp();
+//                }
+//            }
+//        });
+
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,49 +86,51 @@ public class settings extends Fragment {
                 getActivity().finish();
             }
         });
-        firebaseAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
 
-        if(firebaseAuth.getCurrentUser() != null ) {
+        if (firebaseAuth.getCurrentUser() != null) {
             userId = firebaseAuth.getCurrentUser().getUid();
 
             DocumentReference documentReference = fStore.collection("users").document(userId);
             documentReference.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
                 @Override
-                public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot,
+                                    @Nullable FirebaseFirestoreException e) {
                     phoneedit.setText(documentSnapshot.getString("Phone Number"));
                     useredit.setText(documentSnapshot.getString("Username"));
                     emailedit.setText(documentSnapshot.getString("Email Address"));
                 }
             });
+
         }
 
-        if(firebaseAuth.getCurrentUser() == null ) {
-            chngpass.setVisibility(View.INVISIBLE);
-            signin.setVisibility(View.VISIBLE);
+            if (firebaseAuth.getCurrentUser() == null) {
+                chngpass.setVisibility(View.INVISIBLE);
+                signin.setVisibility(View.VISIBLE);
+                signout.setVisibility(View.INVISIBLE);
+            }
+
+            chngpass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), ChangePassword.class);
+                    startActivity(i);
+                }
+            });
+
+            signin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), WelcomeActivity.class);
+                    startActivity(intent);
+                }
+            });
+            return view;
         }
 
-        chngpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(getActivity(), ChangePassword.class);
-                startActivity(i);
-                getActivity().finish();
-            }
-        });
-
-
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getActivity() , WelcomeActivity.class);
-                startActivity(intent);
-            }
-        });
-        return view;
-
-    }
-
+//        public void restartApp(){
+//                Intent restart = new Intent(getActivity(), settings.class);
+//                startActivity(restart);
+//                getActivity().finish();
+//        }
 
 }

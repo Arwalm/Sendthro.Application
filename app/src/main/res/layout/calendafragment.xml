@@ -25,56 +25,86 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="106dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp"
         android:background="@color/colorPrimary">
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="114dp"
         android:background="@color/colorAccent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="392dp"
+        android:layout_height="451dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="92dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="12dp"
         app:mcv_selectionColor="@color/colorPrimary"
         app:mcv_showOtherDates="all">
 
     </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
 
-    <TextView
-        android:id="@+id/newEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/new_event"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginBottom="123dp"
-        android:text="New Event"
-        android:textColor="@color/colorPrimary"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="491dp"
+        android:layout_marginEnd="0dp"
+        android:clickable="true"
+        android:onClick="new_events">
 
-    <ImageView
-        android:id="@+id/plussign"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="123dp"
-        android:src="@drawable/ic_newevents" />
+        <ImageView
+            android:id="@+id/plussign"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:src="@drawable/ic_newevents" />
+
+
+        <TextView
+            android:id="@+id/newEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="9dp"
+            android:text="New Event"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/QU_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
+
+
+    </RelativeLayout>
+
 
     <!--    <com.jonaswanke.calendar.CalendarView-->
 <!--        android:id="@+id/calendar"-->

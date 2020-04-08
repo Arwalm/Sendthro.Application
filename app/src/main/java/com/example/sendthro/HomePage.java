@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 public class HomePage extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-
+    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class HomePage extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton4);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton4);
         FloatingActionButton smsfab = (FloatingActionButton) findViewById(R.id.smsfab);
         FloatingActionButton wtsfab = (FloatingActionButton) findViewById(R.id.wtsfab);
         FloatingActionButton emailfab = (FloatingActionButton) findViewById(R.id.emailfab);
@@ -108,6 +108,7 @@ public class HomePage extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
+
                     switch (item.getItemId()){
                         case R.id.nav_time:
                             selectedFragment = new scheduledmsg();
@@ -118,7 +119,7 @@ public class HomePage extends AppCompatActivity {
                             break;
 
                         case R.id.nav_calendar:
-                            selectedFragment = new CalendarFragment();
+                            selectedFragment = new Calendar_events();
                             break;
 
                         case R.id.nav_setting:

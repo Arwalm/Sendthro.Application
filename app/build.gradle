@@ -65,6 +65,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     implementation project(path: ':smsscheduler')
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
 }
 
 apply plugin: 'com.android.application'

@@ -10,9 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ChangePassword"></activity>
+        <activity android:name=".ChangePassword"/>
         <activity android:name=".CreateSmsScheduleActivity" />
         <activity android:name=".CreateEmailScheduleActivity" />
+        <activity android:name=".MainActivityU" />
         <activity android:name=".WhatsAppScheduler" />
         <activity android:name=".EmailScheduler" />
         <activity android:name=".SmsScheduler" />
@@ -43,6 +44,24 @@
         
         <receiver android:name=".MyBroadcastReceiver" />
 
+        <activity android:name=".AddReminderActivity"
+            android:label="@string/title_activity_add_reminder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <!-- Parent activity meta-data to support 4.0 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity"
+            />
+        </activity>
+        <provider
+            android:name=".AlarmReminderProvider"
+            android:authorities="com.example.sendthro"
+            android:exported="false" />
+
+        <service
+            android:name=".ReminderAlarmService"
+            android:exported="false" />
     </application>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />

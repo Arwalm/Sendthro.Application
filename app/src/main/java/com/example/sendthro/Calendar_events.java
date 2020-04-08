@@ -19,38 +19,34 @@ public class Calendar_events extends Fragment{
         View v = inflater.inflate(R.layout.calender_events, container, false);
 
 
-    BottomNavigationView bottomNavigationView = v.findViewById(R.id.bnview);
-        bottomNavigationView.setOnNavigationItemSelectedListener(NavLi);
+        getFragmentManager().beginTransaction().replace(R.id.container, new CalendarFragment()).commit();
 
-    getFragmentManager().beginTransaction().replace(R.id.container,
-                new CalendarFragment()).commit();
 
-    return v;
+        BottomNavigationView topnav = v.findViewById(R.id.nav_calendar);
+        topnav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedF = null;
 
-}
+                switch (item.getItemId()){
+                    case R.id.viewcalendar:
+                        selectedF = new CalendarFragment();
+                        break;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener NavLi =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    switch (item.getItemId()){
-                        case R.id.viewcalendar:
-                            selectedFragment = new CalendarFragment();
-                            break;
-
-                        case R.id.viewevents:
-                            selectedFragment = new EventsFragment();
-                            break;
-
-                    }
-
-                    getFragmentManager().beginTransaction().replace(R.id.container,
-                            selectedFragment).commit();
-
-                    return true;
+                    case R.id.viewevents:
+                        selectedF = new EventsFragment();
+                        break;
                 }
-            };
+
+                getFragmentManager().beginTransaction().replace(R.id.container, selectedF).commit();
+
+                return true;
+            }
+
+    });
+        return v;
+
+    }
 }
+
 

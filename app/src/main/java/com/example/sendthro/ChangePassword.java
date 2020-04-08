@@ -13,9 +13,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
-public class ChangePassword extends AppCompatActivity {
+public class ChangePassword extends FragmentActivity {
     EditText newpass;
     Button button;
     FirebaseAuth auth;
@@ -24,6 +24,11 @@ public class ChangePassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        settings set = new settings();
+
 
         auth = FirebaseAuth.getInstance();
 
@@ -42,14 +47,34 @@ public class ChangePassword extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(ChangePassword.this, "your psaaword successFully changed!", Toast.LENGTH_SHORT).show();
-//                                        Intent intent = new Intent (ChangePassword.this, settings.class);
-//                                        startActivity(intent);
-//                                        finish();
+//                                        transaction.replace(R.id.framlayout,set);
+//                                        transaction.commit();
+                                            if ( getFragmentManager().getBackStackEntryCount() > 0)
+                                            {
+                                                getFragmentManager().popBackStack();
+                                                return;
+                                            }
+                                            ChangePassword.super.onBackPressed();
 
-                                    } else {
-                                        Toast.makeText(ChangePassword.this, "Error! password did not change" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(ChangePassword.this, "Error! password did not change" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                        if ( getFragmentManager().getBackStackEntryCount() > 0)
+                                        {
+                                            getFragmentManager().popBackStack();
+                                            return;
+                                        }
+                                        ChangePassword.super.onBackPressed();
+                                        }
                                     }
-                                }
+
+
+//                                    else {
+//                                        Toast.makeText(ChangePassword.this, "Error! password did not change" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                                        transaction.replace(R.id.framlayout,set);
+//                                        transaction.commit();
+//                                    }
+
                             });
                 }
 

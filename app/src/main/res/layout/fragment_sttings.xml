@@ -165,6 +165,16 @@
             android:layout_marginBottom="126dp"
             android:background="@drawable/rounded_button"
             android:text="SignIn / SignUp" />
+
+<!--        <Switch-->
+<!--            android:id="@+id/darkmod"-->
+<!--            android:layout_width="309dp"-->
+<!--            android:layout_height="47dp"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginStart="92dp"-->
+<!--            android:layout_marginBottom="71dp"-->
+<!--            android:text="Enable Dark Mode" />-->
     </RelativeLayout>
 
 
