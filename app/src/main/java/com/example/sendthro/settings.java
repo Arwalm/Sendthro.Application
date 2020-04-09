@@ -81,7 +81,7 @@ public settings(){
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent signoutint = new Intent(getActivity(), WelcomeActivity.class);
+                Intent signoutint = new Intent(getActivity(), MainActivity.class);
                 startActivity(signoutint);
                 getActivity().finish();
             }
@@ -120,7 +120,7 @@ public settings(){
             signin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), WelcomeActivity.class);
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);
                 }
             });

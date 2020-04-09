@@ -56,7 +56,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mAuth.getCurrentUser() == null) {
-                    Intent NewUSer = new Intent(HomePage.this, WelcomeActivity.class);
+                    Intent NewUSer = new Intent(HomePage.this, MainActivity.class);
                     startActivity(NewUSer);
                 } else {
                     Intent Do = new Intent(HomePage.this, CreateSmsScheduleActivity.class);
@@ -70,7 +70,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mAuth.getCurrentUser() == null) {
-                    Intent NewUSer = new Intent(HomePage.this, WelcomeActivity.class);
+                    Intent NewUSer = new Intent(HomePage.this, MainActivity.class);
                     startActivity(NewUSer);
                 } else {
                     Intent Do = new Intent(HomePage.this, Newmessage.class);
@@ -84,7 +84,7 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mAuth.getCurrentUser() == null) {
-                    Intent NewUSer = new Intent(HomePage.this, WelcomeActivity.class);
+                    Intent NewUSer = new Intent(HomePage.this, MainActivity.class);
                     startActivity(NewUSer);
                 } else {
                     Intent Do = new Intent(HomePage.this, Newmessage.class);

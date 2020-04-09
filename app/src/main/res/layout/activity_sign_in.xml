@@ -4,34 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad_bg"
+    android:animateLayoutChanges="true"
     tools:context=".SignIn">
-
 
     <EditText
         android:id="@+id/Email"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
+        android:layout_width="367dp"
+        android:layout_height="52dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="297dp"
+        android:layout_marginBottom="323dp"
+        android:background="@drawable/et_bg"
         android:ems="10"
-        android:hint="@string/email"
+        android:hint="  Email"
         android:inputType="textEmailAddress"
         android:textColor="#B2021340" />
 
     <EditText
         android:id="@+id/Password"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
+        android:layout_width="367dp"
+        android:layout_height="52dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="27dp"
-        android:layout_marginBottom="242dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="250dp"
+        android:background="@drawable/et_bg"
         android:ems="10"
-        android:hint="@string/password"
+        android:hint="  Password"
         android:inputType="textPassword"
         android:textColor="#B2021340" />
 
@@ -43,26 +46,26 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="29dp"
-        app:srcCompat="@drawable/iconcolore" />
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="21dp"
+        app:srcCompat="@drawable/app_icon" />
 
     <Button
         android:id="@+id/signin"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="374dp"
-        android:layout_height="40dp"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="191dp"
-        android:background="@drawable/rounded_button"
+        android:layout_marginBottom="156dp"
+        android:background="@drawable/btn_bg"
         android:fontFamily="sans-serif-condensed"
         android:text="SIGN IN"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="#B2FFFFFF"
+        android:textColor="#FFFFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,9 +78,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="115dp"
         android:text="Don't have account yet ? Sign Up"
-        android:textColor="#B2021340"
+        android:textColor="#FFFFFFFF"
         android:textSize="16sp" />
 
 

@@ -1,37 +1,72 @@
 package com.example.sendthro;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.WindowManager;
-
-import com.google.firebase.auth.FirebaseAuth;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 4000;
-    FirebaseAuth mAuth;
+    RelativeLayout rellay1, rellay2;
+
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            rellay1.setVisibility(View.VISIBLE);
+            rellay2.setVisibility(View.VISIBLE);
+        }
+    };
+
+    Button signinbtn, signupbtn, skipbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAuth = FirebaseAuth.getInstance();
+        signinbtn = (Button) findViewById(R.id.signinbtn);
+        signupbtn = (Button) findViewById(R.id.signupbtn);
+        skipbtn = (Button) findViewById(R.id.skipbtn);
 
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        new Handler().postDelayed(new Runnable() {
+        rellay1 = (RelativeLayout) findViewById(R.id.rellay1);
+        rellay2 = (RelativeLayout) findViewById(R.id.rellay2);
+
+        handler.postDelayed(runnable, 3000); //2000 is the timeout for the splash
+
+        signinbtn.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void run() {
-                if (mAuth.getCurrentUser() != null) {
-                    Intent HomePAge = new Intent(MainActivity.this, HomePage.class);
-                    startActivity(HomePAge);
-                    finish();
-                } else {
-                    Intent homeIntent = new Intent(MainActivity.this, WelcomeActivity.class);
-                    startActivity(homeIntent);
-                    finish();
-                }
+            public void onClick(View v){
+                Intent SignIn = new Intent(MainActivity.this, SignIn.class);
+                startActivity(SignIn);
             }
-         },SPLASH_TIME_OUT);
+        });
+
+        signupbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent SignUp = new Intent(MainActivity.this, SignUp.class);
+                startActivity(SignUp);
+            }
+        });
+
+
+        skipbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent Skip = new Intent(MainActivity.this, HomePage.class);
+                startActivity(Skip);
+                finish();
+            }
+        });
     }
+
+//    public void SignOut (View view) {
+//        FirebaseAuth.getInstance().signOut();
+//        Intent signoutint = new Intent(MainActivity.this, HomePage.class);
+//        startActivity(signoutint);
+//        finish();
+//    }
+
 }

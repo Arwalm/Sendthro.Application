@@ -1,46 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B2021340"
-    tools:context=".MainActivity"
-    android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
-    >
+    android:background="@drawable/grad_bg"
+    android:animateLayoutChanges="true"
+    android:backgroundTintMode="add"
+    tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="380dp"
-        android:layout_height="303dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/app_icon" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
+
+
+        <ImageView
+            android:id="@+id/imgView_logo"
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/app_icon"/>
+
+
+        <RelativeLayout
+            android:id="@+id/rellay1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgView_logo"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="WELCOME TO SENDTHRO"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/linlay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_login"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/signinbtn"
+                        android:layout_width="330dp"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="SIGN IN"
+                        android:textSize="24sp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/signupbtn"
+                        style="@style/Widget.AppCompat.Button"
+                        android:layout_width="330dp"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="SIGN UP"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textSize="24sp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rellay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/skipbtn"
+            android:layout_width="91dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="88dp"
+            android:text="Skip"
+            android:background="@drawable/btn_bg"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </RelativeLayout>
+
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="10dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/qulogo" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="SendThro"
-        android:textColor="#FFFFFF"
-        android:textSize="42sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
