@@ -34,16 +34,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 
-/**
- * Created by delaroy on 10/26/17.
- */
-
 public class AddReminderActivity extends AppCompatActivity implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener, LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int EXISTING_VEHICLE_LOADER = 0;
-
 
     private Toolbar mToolbar;
     private EditText mTitleText;
@@ -100,14 +95,14 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         if (mCurrentReminderUri == null) {
 
-            setTitle(getString(R.string.editor_activity_title_new_reminder));
+           // setTitle(getString(R.string.editor_activity_title_new_reminder));
 
             // Invalidate the options menu, so the "Delete" menu option can be hidden.
             // (It doesn't make sense to delete a reminder that hasn't been created yet.)
             invalidateOptionsMenu();
         } else {
 
-            setTitle(getString(R.string.editor_activity_title_edit_reminder));
+            //setTitle(getString(R.string.editor_activity_title_edit_reminder));
 
 
             getLoaderManager().initLoader(EXISTING_VEHICLE_LOADER, null, this);
@@ -207,7 +202,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         }
 
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(R.string.title_activity_add_reminder);
+        getSupportActionBar().setTitle(" ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -241,7 +236,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     }
 
     // On clicking Date picker
-    public void setDate(View v) {
+        public void setDate(View v) {
         Calendar now = Calendar.getInstance();
         DatePickerDialog dpd = DatePickerDialog.newInstance(
                 this,

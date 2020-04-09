@@ -1,22 +1,27 @@
 package com.example.sendthro;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.SpannableString;
 import android.text.format.DateFormat;
 import android.text.style.RelativeSizeSpan;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -25,52 +30,71 @@ import java.util.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CreateSmsScheduleActivity extends AppCompatActivity
-        implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class CreateSmsScheduleActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-//    @BindView(R.id.btnSetSchedule)
-//    Button btnSetSchedule;
-    @BindView(R.id.textViewDate)
+    //@BindView(R.id.btnSetSchedule)
+    Button btnSetSchedule;
+    //@BindView(R.id.textViewDate)
     TextView textViewDate;
-    @BindView(R.id.textViewTime)
+    //@BindView(R.id.textViewTime)
     TextView textViewTime;
-    @BindView(R.id.relativeLayoutSelectTime)
+    //@BindView(R.id.relativeLayoutSelectTime)
     RelativeLayout relativeLayoutSelectTime;
-    @BindView(R.id.relativeLayoutSelectDate)
+    //@BindView(R.id.relativeLayoutSelectDate)
     RelativeLayout relativeLayoutSelectDate;
     Calendar calendar;
-    @BindView(R.id.editTextMessage)
+    //@BindView(R.id.editTextMessage)
     EditText editTextMessage;
-    @BindView(R.id.editTextToRecipient)
+    //@BindView(R.id.editTextToRecipient)
     EditText editTextToRecipient;
 
-    @BindView(R.id.btnSetSchedule)
-    FloatingActionButton btnSetSchedule;
+    Button addto;
+    EditText toText;
 
     private static final int PERMISSIONS_REQUEST_SEND_SMS = 101;
     int mHour, mMinute, mYear, mMonth, mDay;
     SmsDatabaseHelper databaseHelper;
 
+    private static final int PICK_CONTACT = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_sms_schedule);
-      //  ButterKnife.bind(this);
+        ButterKnife.bind(this);
         calendar = Calendar.getInstance();
 
-        databaseHelper = new SmsDatabaseHelper(this);
-    }
+        btnSetSchedule = findViewById(R.id.btnSetSchedule);
+        textViewDate = findViewById(R.id.textViewDate);
+        textViewTime = findViewById(R.id.textViewTime);
+        relativeLayoutSelectTime = findViewById(R.id.relativeLayoutSelectTime);
+        relativeLayoutSelectDate = findViewById(R.id.relativeLayoutSelectDate);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        editTextToRecipient = findViewById(R.id.editTextToRecipient);
+        addto = findViewById(R.id.addto);
 
+
+        databaseHelper = new SmsDatabaseHelper(this);
+
+        addto.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+
+                startActivityForResult(it, PICK_CONTACT);
+            }
+        });
+    }
 
     @OnClick(R.id.btnSetSchedule)
     public void setSchedule() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_REQUEST_SEND_SMS);
             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
-
         } else {
             setSmsSchedule();
         }
@@ -113,14 +137,12 @@ public class CreateSmsScheduleActivity extends AppCompatActivity
 
         if (databaseHelper.addSms(_id, contactNumber, message, textViewTime.getText().toString(),
                 textViewDate.getText().toString(), (int) calendar.getTimeInMillis())) {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             finish();
             startActivity(new Intent(this, SmsScheduler.class));
         } else {
             Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show();
         }
     }
-
 
     @OnClick(R.id.relativeLayoutSelectDate)
     public void getDate() {
@@ -258,6 +280,63 @@ public class CreateSmsScheduleActivity extends AppCompatActivity
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.HOUR, hourOfDay);
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == PICK_CONTACT) {
+//            if (requestCode == Activity.RESULT_OK) {
+//                Uri contactData = data.getData();
+//                Cursor cursor = managedQuery(contactData, null, null, null, null);
+//                cursor.moveToFirst();
+//                //Get number and name from cursor
+//                String number = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
+//                String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+//                //set number and name in editext
+//                toText.setText(contactName);
+//                toText.setText(number);
+//            } else {
+//                Toast.makeText(this, "NOT WORKING", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
+
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+        switch (reqCode) {
+            case (PICK_CONTACT) :
+                if (resultCode == Activity.RESULT_OK) {
+
+                    Uri contactData = data.getData();
+                    Cursor c =  managedQuery(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
+
+                        String id =c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+
+                        String hasPhone =c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+                        String phoneNo = null ;
+
+                        if (hasPhone.equalsIgnoreCase("1")) {
+                            Cursor phones = getContentResolver().query(
+                                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,
+                                    null, null);
+                            phones.moveToFirst();
+                            phoneNo = phones.getString(phones.getColumnIndex("data1"));
+
+                            editTextToRecipient.setText(phoneNo);
+                            System.out.println("number is:"+phoneNo);
+                        }
+                        String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                    }
+                }
+                break;
+        }
+    }
 }
+
+
 
 

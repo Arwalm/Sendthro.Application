@@ -10,11 +10,12 @@
     <string name="msg">msg</string>
     <string name="send">send</string>
     <string name="reciver_number">reciver number...</string>
+    <string name="user_events_title"><font fgcolor="#FFFFFF">Your Events</font></string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!-- TODO: Reminder Strings -->
 
-    <string name="title_activity_add_reminder">Add Event</string>
+<!--    <string name="title_activity_add_reminder">Add Event</string>-->
     <string name="title_activity_edit_reminder">Edit Event</string>
     <string name="title_activity_licenses">Licenses</string>
 

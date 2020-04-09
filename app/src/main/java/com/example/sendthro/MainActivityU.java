@@ -27,7 +27,6 @@ public class MainActivityU extends AppCompatActivity implements LoaderManager.Lo
     AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
     ListView reminderListView;
     ProgressDialog prgDialog;
-
     private static final int VEHICLE_LOADER = 0;
 
     @Override
@@ -36,9 +35,6 @@ public class MainActivityU extends AppCompatActivity implements LoaderManager.Lo
         setContentView(R.layout.activity_main_u);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle(R.string.app_name);
-
 
         reminderListView = (ListView) findViewById(R.id.list);
         View emptyView = findViewById(R.id.empty_view);

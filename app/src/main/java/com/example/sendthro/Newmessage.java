@@ -1,12 +1,11 @@
 package com.example.sendthro;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -145,18 +144,30 @@ public class Newmessage extends AppCompatActivity {
             });
             builder.show();
         }
-        @Override
-        public void onActivityResult (int requestCode, int resultCode , Intent data){
-            super.onActivityResult( requestCode,  resultCode ,  data);
-            if (requestCode== Activity.RESULT_OK){
-                if(requestCode==REQUEST_CAMERA){
-                    Bundle bundle = data.getExtras();
-                    final Bitmap bmp = (Bitmap) bundle.get("data");
-                    attachment.setImageBitmap(bmp);
-                } else if (requestCode==SELECT_FILE){
-                    Uri selsctedImageUri = data.getData();
-                    attachment.setImageURI(selsctedImageUri);
-                }
+    @Override
+    public void onActivityResult (int requestCode, int resultCode , Intent data){
+        super.onActivityResult( requestCode,  resultCode ,  data);
+//        if (requestCode== Activity.RESULT_OK){
+//            // if(requestCode==REQUEST_CAMERA){
+//            Bundle bundle = data.getExtras();
+//            final Bitmap bmp = (Bitmap) bundle.get("data");
+//            attachment.setImageBitmap(bmp);
+//            // } else if (requestCode==SELECT_FILE){
+//            Uri selsctedImageUri = data.getData();
+//            attachment.setImageURI(selsctedImageUri);
+//            // }
+        if( requestCode==PICK_CONTACT) {
+                Uri contactData = data.getData();
+                Cursor cursor = managedQuery(contactData, null, null, null, null);
+                cursor.moveToFirst();
+
+                //Get number and name from cursor
+                String number = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+
+                //set number and name in editext
+                toText.setText(contactName);
+                toText.setText(number);
             }
         }
 

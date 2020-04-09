@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -23,6 +24,7 @@ public class CalendarFragment extends Fragment {
     MaterialCalendarView materialCalendarView;
     TextView newEvent;
     ImageView plussign;
+    RelativeLayout new_event;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,9 +32,10 @@ public class CalendarFragment extends Fragment {
         View v = inflater.inflate(R.layout.calendafragment, container, false);
 
         materialCalendarView = v.findViewById(R.id.calendarView);
+
         newEvent = v.findViewById(R.id.newEvent);
         plussign = v.findViewById(R.id.plussign);
-
+        new_event = v.findViewById(R.id.new_event);
 
         materialCalendarView.state().edit()
                 .setFirstDayOfWeek(Calendar.MONDAY)
@@ -53,47 +56,13 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        newEvent.setOnClickListener(new View.OnClickListener() {
+        new_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newevent = new Intent(getActivity(), AddReminderActivity.class);
-                startActivity(newevent);
+                Intent create_event = new Intent(getActivity(), AddReminderActivity.class);
+                startActivity(create_event);
             }
         });
-
-        plussign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newevent = new Intent(getActivity(), AddReminderActivity.class);
-                startActivity(newevent);
-            }
-        });
-        //-------------------//
-
-//
-//        BottomNavigationView bottomNavigationView = v.findViewById(R.id.nav_calendar);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                Fragment selectedFragment = null;
-//
-//                switch (item.getItemId()) {
-//                    case R.id.viewcalendar:
-//                        selectedFragment = new CalendarFragment();
-//                        break;
-//
-//                    case R.id.viewevents:
-//                        selectedFragment = new EventsFragment();
-//                        break;
-//                }
-//
-//                getFragmentManager().beginTransaction().replace(R.id.container,
-//                        selectedFragment).commit();
-//
-//                return true;
-//            }
-//        });
-
 
         return v;
 

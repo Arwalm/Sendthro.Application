@@ -13,7 +13,7 @@
         app:popupTheme="@style/TextAppearance.AppCompat"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="16dp"
-        app:theme="@style/AppTheme"
+        app:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:background="@color/colorPrimary"/>
 
     <ListView
