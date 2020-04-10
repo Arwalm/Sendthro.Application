@@ -55,6 +55,9 @@ public class EmailArrayAdapter extends BaseAdapter {
             holder.textViewSubject = convertView.findViewById(R.id.textViewSubject);
             holder.textViewScheduledDate = convertView.findViewById(R.id.textViewScheduledDate);
             holder.textViewBody = convertView.findViewById(R.id.textViewBody);
+
+            convertView.setTag(holder);
+
         } else {
             holder = (ViewHolder) convertView.getTag();
         }

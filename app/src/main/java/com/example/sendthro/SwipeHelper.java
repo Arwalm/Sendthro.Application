@@ -21,6 +21,7 @@ import java.util.Queue;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
 
     public static final int BUTTON_WIDTH = 200;
@@ -244,7 +245,8 @@ public abstract class SwipeHelper extends ItemTouchHelper.SimpleCallback {
         }
     }
 
-        public interface UnderlayButtonClickListener {
-            void onClick(int pos);
-        }
+    public interface UnderlayButtonClickListener {
+        void onClick(int pos);
+    }
+
     }

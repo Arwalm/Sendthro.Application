@@ -1,5 +1,6 @@
 package com.example.sendthro;
 
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -113,7 +114,6 @@ public class SmsUpdateSchedulerActivity extends AppCompatActivity implements Dat
 
             if (databaseHelper.addSms(_id, contactNumber, message, textViewTime.getText().toString(),
                     textViewDate.getText().toString(), (int) calendar.getTimeInMillis())) {
-                Toast.makeText(this, "updated to db", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, SmsScheduler.class));
             } else {
                 Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show();
@@ -178,50 +178,51 @@ public class SmsUpdateSchedulerActivity extends AppCompatActivity implements Dat
         calendar.set(Calendar.MONTH, monthOfYear);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
     }
-        public void onTimeSet (TimePickerDialog view,int hourOfDay, int minute, int second){
-            mHour = hourOfDay;
-            mMinute = minute;
 
-            calendar.set(Calendar.SECOND, 0);
-            calendar.set(Calendar.MINUTE, minute);
-            calendar.set(Calendar.HOUR, hourOfDay);
+    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+        mHour = hourOfDay;
+        mMinute = minute;
 
-            calendar.set(Calendar.AM_PM, Calendar.AM);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.HOUR, hourOfDay);
 
-            String str;
-            if (calendar.get(Calendar.AM_PM) == Calendar.AM)
-                str = "AM";
-            else
-                str = "PM";
+        calendar.set(Calendar.AM_PM, Calendar.AM);
 
-            String hours;
-            if (calendar.get(Calendar.HOUR) > 9) {
-                hours = String.valueOf(calendar.get(Calendar.HOUR));
-            } else {
-                hours = "0" + String.valueOf(calendar.get(Calendar.HOUR));
-            }
+        String str;
+        if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+            str = "AM";
+        else
+            str = "PM";
 
-            String minutes;
-            if (minute > 9) {
-                minutes = String.valueOf(minute);
-            } else {
-                minutes = "0" + String.valueOf(minute);
-            }
-            if (hours.equalsIgnoreCase("00")) {
-                hours = "12";
-            }
-
-            String selectedTime = hours + ":" + minutes
-                    + "  " + str;
-
-            SpannableString ss2 = new SpannableString(selectedTime);
-            ss2.setSpan(new RelativeSizeSpan(1.5f), 0, 5, 0);
-
-            textViewTime.setText(ss2);
-            calendar.set(Calendar.SECOND, 0);
-            calendar.set(Calendar.MINUTE, minute);
-            calendar.set(Calendar.HOUR, hourOfDay);
+        String hours;
+        if (calendar.get(Calendar.HOUR) > 9) {
+            hours = String.valueOf(calendar.get(Calendar.HOUR));
+        } else {
+            hours = "0" + String.valueOf(calendar.get(Calendar.HOUR));
         }
+
+        String minutes;
+        if (minute > 9) {
+            minutes = String.valueOf(minute);
+        } else {
+            minutes = "0" + String.valueOf(minute);
+        }
+        if (hours.equalsIgnoreCase("00")) {
+            hours = "12";
+        }
+
+        String selectedTime = hours + ":" + minutes
+                + "  " + str;
+
+        SpannableString ss2 = new SpannableString(selectedTime);
+        ss2.setSpan(new RelativeSizeSpan(1.5f), 0, 5, 0);
+
+        textViewTime.setText(ss2);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.HOUR, hourOfDay);
+    }
 
     @Override
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
@@ -269,4 +270,3 @@ public class SmsUpdateSchedulerActivity extends AppCompatActivity implements Dat
         calendar.set(Calendar.HOUR, hourOfDay);
     }
 }
-

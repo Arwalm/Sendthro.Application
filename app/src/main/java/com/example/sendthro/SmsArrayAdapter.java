@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 
 public class SmsArrayAdapter extends BaseAdapter {
 
-
     private Context context;
     private List<Sms> smsArrayList;
     SmsDatabaseHelper databaseHelper;
@@ -58,6 +57,9 @@ public class SmsArrayAdapter extends BaseAdapter {
             holder.textViewTime = convertView.findViewById(R.id.textViewTime);
             holder.textViewMessage = convertView.findViewById(R.id.textViewMessage);
             holder.textViewDate = convertView.findViewById(R.id.textViewDate);
+
+            convertView.setTag(holder);
+
         } else {
             holder = (ViewHolder) convertView.getTag();
         }

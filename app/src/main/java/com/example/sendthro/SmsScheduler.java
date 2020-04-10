@@ -39,7 +39,6 @@ public class SmsScheduler extends AppCompatActivity {
     SmsDatabaseHelper databaseHelper;
     int position = 1;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

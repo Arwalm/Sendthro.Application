@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
+
 public class MyBroadcastReceiver extends BroadcastReceiver {
     String actionUriSMSSend = "com.scheduler.action.SMS_SEND";
     String actionUriEmailNotification = "com.scheduler.action.EMAIL_SEND";
@@ -98,7 +99,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         }
     }
-
 }
 
 
