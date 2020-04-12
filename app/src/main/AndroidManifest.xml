@@ -13,7 +13,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -22,7 +21,7 @@
         <activity android:name=".SignIn" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".Newmessage" />
-        <activity android:name=".ChangePassword"/>
+        <activity android:name=".ChangePassword" />
         <activity android:name=".CreateSmsScheduleActivity" />
         <activity android:name=".CreateEmailScheduleActivity" />
         <activity android:name=".MainActivityU" />
@@ -36,46 +35,55 @@
         <activity android:name=".testActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <receiver android:name=".MyBroadcastReceiver" />
 
-        <activity android:name=".AddReminderActivity"
+        <activity
+            android:name=".AddReminderActivity"
             android:parentActivityName=".MainActivityU"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-<!--         android:label="@string/title_activity_add_reminder"-->
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <!-- android:label="@string/title_activity_add_reminder" -->
 
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MainActivityU"
-            />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivityU" />
         </activity>
+
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
 
         <provider
             android:name=".AlarmReminderProvider"
             android:authorities="com.example.sendthro"
             android:exported="false" />
 
+        <receiver android:name=".MyBroadcastReceiver" />
+        <receiver android:name=".NotificationReciver" />
+
         <service
             android:name=".ReminderAlarmService"
             android:exported="false" />
     </application>
-
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"  tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.MEDIA_CONTENT_CONTROL"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.CAMERA2" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 </manifest>

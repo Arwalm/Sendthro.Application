@@ -106,15 +106,16 @@ public class AlarmReminderProvider extends ContentProvider {
 
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
 
-        long id = database.insert(AlarmReminderContract.AlarmReminderEntry.TABLE_NAME, null, values);
+        long id = database.insert(AlarmReminderContract.AlarmReminderEntry.TABLE_NAME, null, values );
 
         if (id == -1) {
             Log.e(LOG_TAG, "Failed to insert row for " + uri);
             return null;
         }
 
-        getContext().getContentResolver().notifyChange(uri, null);
-
+        if (id != 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
         return ContentUris.withAppendedId(uri, id);
     }
 

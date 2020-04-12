@@ -34,6 +34,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NavUtils;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class AddReminderActivity extends AppCompatActivity implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener, LoaderManager.LoaderCallbacks<Cursor> {
@@ -129,6 +131,8 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
+
+
         mMinute = mCalendar.get(Calendar.MINUTE);
         mYear = mCalendar.get(Calendar.YEAR);
         mMonth = mCalendar.get(Calendar.MONTH) + 1;
@@ -136,6 +140,13 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         mDate = mDay + "/" + mMonth + "/" + mYear;
         mTime = mHour + ":" + mMinute;
+
+//_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
+
+        mTitle = mTitleText.getText().toString();
+        Bundle title = new Bundle();
+        title.putString("title", mTitle);
+//_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
 
         // Setup Reminder Title EditText
         mTitleText.addTextChangedListener(new TextWatcher() {
@@ -557,11 +568,11 @@ public class AddReminderActivity extends AppCompatActivity implements
             if (newUri == null) {
                 // If the new content URI is null, then there was an error with insertion.
                 Toast.makeText(this, getString(R.string.editor_insert_reminder_failed),
-                        Toast.LENGTH_SHORT).show();
+                        LENGTH_SHORT).show();
             } else {
                 // Otherwise, the insertion was successful and we can display a toast.
                 Toast.makeText(this, getString(R.string.editor_insert_reminder_successful),
-                        Toast.LENGTH_SHORT).show();
+                        LENGTH_SHORT).show();
             }
         } else {
 
@@ -571,11 +582,11 @@ public class AddReminderActivity extends AppCompatActivity implements
             if (rowsAffected == 0) {
                 // If no rows were affected, then there was an error with the update.
                 Toast.makeText(this, getString(R.string.editor_update_reminder_failed),
-                        Toast.LENGTH_SHORT).show();
+                        LENGTH_SHORT).show();
             } else {
                 // Otherwise, the update was successful and we can display a toast.
                 Toast.makeText(this, getString(R.string.editor_update_reminder_successful),
-                        Toast.LENGTH_SHORT).show();
+                        LENGTH_SHORT).show();
             }
         }
 
@@ -586,14 +597,11 @@ public class AddReminderActivity extends AppCompatActivity implements
             } else if (mRepeat.equals("false")) {
                 new AlarmScheduler().setAlarm(getApplicationContext(), selectedTimestamp, mCurrentReminderUri);
             }
-
-            Toast.makeText(this, "",
-                    Toast.LENGTH_LONG).show();
         }
-
-        // Create toast to confirm new reminder
-        Toast.makeText(getApplicationContext(), "Saved",
-                Toast.LENGTH_SHORT).show();
+//
+//        // Create toast to confirm new reminder
+//        Toast.makeText(getApplicationContext(), "Saved",
+//                Toast.LENGTH_SHORT).show();
 
     }
 

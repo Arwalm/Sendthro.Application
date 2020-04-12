@@ -15,7 +15,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <!-- TODO: Reminder Strings -->
 
-<!--    <string name="title_activity_add_reminder">Add Event</string>-->
+    <!--    <string name="title_activity_add_reminder">Add Event</string>-->
     <string name="title_activity_edit_reminder">Edit Event</string>
     <string name="title_activity_licenses">Licenses</string>
 

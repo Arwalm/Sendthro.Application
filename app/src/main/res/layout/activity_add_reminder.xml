@@ -36,7 +36,7 @@
             android:lines="4"
             android:minLines="4"
             android:scrollHorizontally="false"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorPrimaryDark"
             android:textColorHint="@color/colorPrimary"
             android:textSize="25dp" />
 
