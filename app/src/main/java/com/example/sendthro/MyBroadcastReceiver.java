@@ -19,6 +19,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     String actionUriSMSSend = "com.scheduler.action.SMS_SEND";
     String actionUriEmailNotification = "com.scheduler.action.EMAIL_SEND";
     public static final int NOTIFICATION_ID = 1;
+    SmsDatabaseHelper databaseHelper;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,6 +37,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(number, null, message1, null, null);
                 Toast.makeText(context, "SMS sent.", Toast.LENGTH_LONG).show();
+
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_smsmsg)
                         .setContentTitle("Scheduler")
@@ -50,6 +52,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 //LED
                 mBuilder.setLights(Color.RED, 3000, 3000);
                 mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+
             } catch (Exception e) {
                 Toast.makeText(context, "SMS failed, please try again.", Toast.LENGTH_LONG).show();
                 e.printStackTrace();

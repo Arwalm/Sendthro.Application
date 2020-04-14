@@ -36,10 +36,8 @@ public class ReminderAlarmService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-
             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             Uri uri = intent.getData();
-
             //Display a notification to view the task details
             Intent action = new Intent(this, AddReminderActivity.class);
             action.setData(uri);
@@ -48,23 +46,19 @@ public class ReminderAlarmService extends IntentService {
                     .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
             //Grab the task description
-            if (uri != null) {
-                cursor = getContentResolver().query(uri, null, null, null, null);
+           if (uri != null) {
+            cursor = getContentResolver().query(uri, null, null, null, null);
             }
 
         String description = "";
-
         try {
-                if (cursor != null && cursor.moveToFirst()) {
-                    description = AlarmReminderContract.getColumnString(cursor, AlarmReminderContract.AlarmReminderEntry.KEY_TITLE);
-                }
-            } finally {
-                if (cursor != null) {
-                    cursor.close();
-                }
+            if (cursor != null && cursor.moveToFirst()) {
+                description = AlarmReminderContract.getColumnString(cursor, AlarmReminderContract.AlarmReminderEntry.KEY_TITLE);
             }
-            ///////////
-
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            } }
         Intent activity = new Intent (this, CreateSmsScheduleActivity.class);
         PendingIntent contentintent = PendingIntent.getActivity(this,
                 0,activity,0);
@@ -73,18 +67,17 @@ public class ReminderAlarmService extends IntentService {
                 0,reciver, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Notification note = new NotificationCompat.Builder(this)
-                    .setContentIntent(contentintent)
                     .setContentTitle(getString(R.string.reminder_title))
                     .setContentText(description)
                     .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
                     .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                    .setContentIntent(contentintent)
+                    .setContentIntent(operation)
                     .setAutoCancel(true)
-                    .addAction(R.mipmap.ic_launcher, "Schedule this event", actionIntent)
+                    .addAction(R.drawable.ic_navtime, "Schedule this event", contentintent)
                     .setOnlyAlertOnce(true)
                     .setColor(Color.DKGRAY)
                     .build();
-//                    .setContentIntent(operation)
-
             manager.notify(NOTIFICATION_ID, note);
 
 

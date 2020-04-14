@@ -31,7 +31,6 @@ public class settings extends Fragment {
     FirebaseFirestore fStore;
     String userId;
 
-//    private Switch darkmode;
 public settings(){
     //Required empty Constructor
 }
@@ -51,31 +50,7 @@ public settings(){
         signout = view.findViewById(R.id.signout);
         firebaseAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-//        darkmode= view.findViewById(R.id.darkmod);
-//
-//
-//        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
-//            getActivity().setTheme(R.style.darktheme);
-//        }
-//        else getActivity().setTheme(R.style.AppTheme);
-//
-//
-//        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
-//            darkmode.setChecked(true);
-//        }
-//
-//        darkmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                    restartApp();
-//                } else {
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                    restartApp();
-//                }
-//            }
-//        });
+
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,10 +102,5 @@ public settings(){
             return view;
         }
 
-//        public void restartApp(){
-//                Intent restart = new Intent(getActivity(), settings.class);
-//                startActivity(restart);
-//                getActivity().finish();
-//        }
 
 }

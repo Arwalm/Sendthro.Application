@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class EmailScheduler extends AppCompatActivity {
     TextView textViewNoSchedule;
     @BindView(R.id.fab)
     FloatingActionButton fab;
-
+    private FirebaseAuth mAuth;
     private EmailDatabaseHelper databaseHelper;
     private List<Email> emails = new ArrayList<Email>();
     private EmailArrayAdapter emailArrayAdapter;
@@ -35,6 +36,7 @@ public class EmailScheduler extends AppCompatActivity {
         setContentView(R.layout.activity_email_scheduler);
         ButterKnife.bind(this);
 
+        mAuth = FirebaseAuth.getInstance();
         databaseHelper = new EmailDatabaseHelper(this);
         fetchEmail();
     }
@@ -52,7 +54,13 @@ public class EmailScheduler extends AppCompatActivity {
 
     @OnClick(R.id.fab)
     public void fabClick() {
-        Intent intent = new Intent(this, CreateEmailScheduleActivity.class);
-        startActivity(intent);
-    }
+
+        if (mAuth.getCurrentUser() == null) {
+            Intent NewUSer = new Intent(EmailScheduler.this, MainActivity.class);
+            startActivity(NewUSer);
+        } else {
+            Intent intent = new Intent(this, CreateEmailScheduleActivity.class);
+            startActivity(intent);
+
+        }}
 }

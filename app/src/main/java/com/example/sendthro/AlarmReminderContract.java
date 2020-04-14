@@ -6,9 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-/**
- * Created by delaroy on 10/25/17.
- */
 public class AlarmReminderContract {
 
     private AlarmReminderContract() {}

@@ -15,10 +15,6 @@ import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 //import com.delaroystudios.alarmreminder.data.AlarmReminderContract;
 
-/**
- * Created by delaroy on 10/27/17.
- */
-
 public class AlarmCursorAdapter extends CursorAdapter {
 
     private TextView mTitleText, mDateAndTimeText, mRepeatInfoText;

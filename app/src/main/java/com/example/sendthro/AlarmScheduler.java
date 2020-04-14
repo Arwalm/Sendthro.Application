@@ -6,18 +6,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 
-/**
- * Created by delaroy on 9/22/17.
- */
 
 public class AlarmScheduler {
 
-    /**
-     * Schedule a reminder alarm at the specified time for the given task.
-     *
-     * @param context Local application or activity context
-     * @param reminderTask Uri referencing the task in the content provider
-     */
 
     public void setAlarm(Context context, long alarmTime, Uri reminderTask) {
         AlarmManager manager = AlarmManagerProvider.getAlarmManager(context);

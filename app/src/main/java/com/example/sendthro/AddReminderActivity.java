@@ -71,7 +71,6 @@ public class AddReminderActivity extends AppCompatActivity implements
     private static final String KEY_REPEAT_TYPE = "repeat_type_key";
     private static final String KEY_ACTIVE = "active_key";
 
-
     // Constant values in milliseconds
     private static final long milMinute = 60000L;
     private static final long milHour = 3600000L;
@@ -97,14 +96,14 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         if (mCurrentReminderUri == null) {
 
-           // setTitle(getString(R.string.editor_activity_title_new_reminder));
+            setTitle(getString(R.string.editor_activity_title_new_reminder));
 
             // Invalidate the options menu, so the "Delete" menu option can be hidden.
             // (It doesn't make sense to delete a reminder that hasn't been created yet.)
             invalidateOptionsMenu();
         } else {
 
-            //setTitle(getString(R.string.editor_activity_title_edit_reminder));
+            setTitle(getString(R.string.editor_activity_title_edit_reminder));
 
 
             getLoaderManager().initLoader(EXISTING_VEHICLE_LOADER, null, this);
@@ -131,8 +130,6 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
-
-
         mMinute = mCalendar.get(Calendar.MINUTE);
         mYear = mCalendar.get(Calendar.YEAR);
         mMonth = mCalendar.get(Calendar.MONTH) + 1;
@@ -141,12 +138,15 @@ public class AddReminderActivity extends AppCompatActivity implements
         mDate = mDay + "/" + mMonth + "/" + mYear;
         mTime = mHour + ":" + mMinute;
 
-//_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
-
-        mTitle = mTitleText.getText().toString();
-        Bundle title = new Bundle();
-        title.putString("title", mTitle);
-//_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
+////_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
+//        mTitle = mTitleText.getText().toString();
+//        Intent serviceintent = new Intent (AddReminderActivity.this, ReminderAlarmService.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("title", mTitle);
+//        serviceintent.putExtra("Title",bundle);
+//        serviceintent.putExtras(bundle);
+//        startService(serviceintent);
+////_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
 
         // Setup Reminder Title EditText
         mTitleText.addTextChangedListener(new TextWatcher() {
@@ -274,7 +274,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     // Obtain date from date picker
         @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-        monthOfYear++;
+        monthOfYear ++;
         mDay = dayOfMonth;
         mMonth = monthOfYear;
         mYear = year;
@@ -403,7 +403,7 @@ public class AddReminderActivity extends AppCompatActivity implements
 
 
                 if (mTitleText.getText().toString().length() == 0) {
-                    mTitleText.setError("Reminder Title cannot be blank!");
+                    mTitleText.setError("Event Title cannot be blank!");
                 } else {
                     saveReminder();
                     finish();

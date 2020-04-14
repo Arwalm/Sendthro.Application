@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class SmsScheduler extends AppCompatActivity {
     FloatingActionButton fab;
     @BindView(R.id.textViewNoSchedule)
     TextView textViewNoSchedule;
-
+    private FirebaseAuth mAuth;
     private List<Sms> smsArrayList = new ArrayList<Sms>();
     private SmsArrayAdapter smsArrayAdapter;
     SmsDatabaseHelper databaseHelper;
@@ -45,11 +46,13 @@ public class SmsScheduler extends AppCompatActivity {
         setContentView(R.layout.activity_sms_scheduler);
 
         ButterKnife.bind(this);
+        mAuth = FirebaseAuth.getInstance();
 
         databaseHelper = new SmsDatabaseHelper(this);
         registerForContextMenu(smsListView);
         fetchSms();
     }
+
     private void fetchSms() {
         smsArrayList = databaseHelper.getAll();
         if (smsArrayList.size() > 0) {
@@ -116,8 +119,13 @@ public class SmsScheduler extends AppCompatActivity {
 
     @OnClick(R.id.fab)
     public void fabClick() {
-        Intent intent = new Intent(this, CreateSmsScheduleActivity.class);
-        startActivity(intent);
+        if (mAuth.getCurrentUser() == null) {
+            Intent NewUSer = new Intent(SmsScheduler.this, MainActivity.class);
+            startActivity(NewUSer);
+        } else {
+            Intent Do = new Intent(SmsScheduler.this, CreateSmsScheduleActivity.class);
+            startActivity(Do);
+        }
     }
 }
 

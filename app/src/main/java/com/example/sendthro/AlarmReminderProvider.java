@@ -13,9 +13,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/**
- * Created by delaroy on 10/25/17.
- */
 
 public class AlarmReminderProvider extends ContentProvider {
 
@@ -113,9 +110,8 @@ public class AlarmReminderProvider extends ContentProvider {
             return null;
         }
 
-        if (id != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
-        }
+
         return ContentUris.withAppendedId(uri, id);
     }
 

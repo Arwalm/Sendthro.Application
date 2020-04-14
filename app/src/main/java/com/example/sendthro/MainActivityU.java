@@ -71,8 +71,6 @@ public class MainActivityU extends AppCompatActivity implements LoaderManager.Lo
         });
 
         getLoaderManager().initLoader(VEHICLE_LOADER, null, this);
-
-
     }
 
     private void setSupportActionBar(Toolbar mToolbar) {

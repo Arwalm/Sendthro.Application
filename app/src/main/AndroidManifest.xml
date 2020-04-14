@@ -10,13 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".QUEvents"></activity>
+        <activity android:name=".SaudiEvents" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".HomePage" />
+        <activity android:name=".Notification_Reciver" />
         <activity android:name=".SignUp" />
         <activity android:name=".SignIn" />
         <activity android:name=".WelcomeActivity" />
@@ -32,6 +36,7 @@
         <activity android:name=".UserEventsActivity" />
         <activity android:name=".CalendarFragment" />
         <activity android:name=".SmsUpdateSchedulerActivity" />
+        <activity android:name=".ReminderAlarmService" />
         <activity android:name=".testActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddReminderActivity"
             android:parentActivityName=".MainActivityU"
@@ -52,10 +56,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivityU" />
         </activity>
-
         <activity
             android:name=".DialogActivity"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/>
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" />
 
         <provider
             android:name=".AlarmReminderProvider"
@@ -64,6 +67,7 @@
 
         <receiver android:name=".MyBroadcastReceiver" />
         <receiver android:name=".NotificationReciver" />
+        <receiver android:name=".Notification_Reciver" />
 
         <service
             android:name=".ReminderAlarmService"
@@ -83,7 +87,7 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.CAMERA2" />
-
+    <uses-permission android:name="android.permission.SET_ALARM"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 </manifest>

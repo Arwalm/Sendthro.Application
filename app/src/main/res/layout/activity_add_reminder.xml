@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AddReminderActivity">
+    tools:context=".AddReminderActivity">`
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -199,8 +199,8 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
-                    android:background="@color/applicationicon_background"
-                    android:backgroundTint="@color/applicationicon_background"
+                    android:background="@color/transparent"
+                    android:backgroundTint="@color/transparent"
                     android:checked="true"
                     android:onClick="onSwitchRepeat"
                     android:textOff="Off"
