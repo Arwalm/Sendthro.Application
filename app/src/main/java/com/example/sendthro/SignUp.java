@@ -139,7 +139,16 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
         if (username.equalsIgnoreCase("pmk")) {
             Usernametxt.setError(getText(R.string.username_already_exists));
         }
-
+//        String mobile = PhoneNumbertxt.getText().toString().trim();
+//
+//        if(mobile.isEmpty() || mobile.length() < 10){
+//            PhoneNumbertxt.setError("Enter a valid Phone Number Please!");
+//            PhoneNumbertxt.requestFocus();
+//            return;
+//        }
+//        Intent intent = new Intent(SignUp.this, PhoneVerification.class);
+//        intent.putExtra("mobile", mobile);
+//        startActivity(intent);
     }
 
     @Override

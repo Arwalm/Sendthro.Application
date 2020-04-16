@@ -86,7 +86,7 @@ public class scheduledmsg extends Fragment {
                     Intent NewUSer = new Intent(getActivity(), MainActivity.class);
                     startActivity(NewUSer);
                 } else {
-                    Intent Do = new Intent(getActivity(), Newmessage.class);
+                    Intent Do = new Intent(getActivity(), CreateWhatsMsg.class);
                     startActivity(Do);
                 }
             }

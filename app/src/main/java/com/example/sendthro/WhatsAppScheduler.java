@@ -31,7 +31,7 @@ public class WhatsAppScheduler extends AppCompatActivity {
             Intent NewUSer = new Intent(WhatsAppScheduler.this, MainActivity.class);
             startActivity(NewUSer);
         } else {
-            Intent  Do  = new Intent(WhatsAppScheduler.this, CreateSmsScheduleActivity.class);
+            Intent  Do  = new Intent(WhatsAppScheduler.this, CreateWhatsMsg.class);
             startActivity( Do );
         }
     }}

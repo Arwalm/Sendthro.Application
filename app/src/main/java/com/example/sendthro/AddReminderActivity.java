@@ -123,7 +123,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         mFAB2 = (FloatingActionButton) findViewById(R.id.starred2);
 
         // Initialize default values
-        mActive = "true";
+        mActive = "false";
         mRepeat = "true";
         mRepeatNo = Integer.toString(1);
         mRepeatType = "Hour";

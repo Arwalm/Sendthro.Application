@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".QUEvents"></activity>
+        <activity android:name=".CreateWhatsMsg"></activity>
+        <activity android:name=".PhoneVerification" />
+        <activity android:name=".QUEvents" />
         <activity android:name=".SaudiEvents" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -44,6 +46,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:exported="true" >
+        </receiver>
+
         <activity
             android:name=".AddReminderActivity"
             android:parentActivityName=".MainActivityU"
@@ -73,6 +81,7 @@
             android:name=".ReminderAlarmService"
             android:exported="false" />
     </application>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_MMS" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -87,7 +96,8 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.CAMERA2" />
-    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.SET_ALARM" />
+
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 </manifest>

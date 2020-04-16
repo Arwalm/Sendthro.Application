@@ -149,7 +149,7 @@
             android:backgroundTint="@color/colorPrimaryDark"
             android:clickable="true"
             app:fabSize="mini"
-            app:srcCompat="@drawable/sms2"
+            app:srcCompat="@drawable/sms_new"
             tools:visibility="invisible" />
 
 

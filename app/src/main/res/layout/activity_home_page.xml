@@ -19,11 +19,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="#B2021340"
+        android:background="#B54A5A77"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:menu="@menu/m_nave" />
 
 
 </RelativeLayout>
+
 

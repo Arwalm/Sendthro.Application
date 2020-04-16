@@ -5,18 +5,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".archivedmsg">
-.
 
-    <ListView
-        android:id="@+id/archivedListView"
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:entries="@layout/layout_row_sms"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:visibility="gone" />
+        android:layout_above="@+id/bnview">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Archived"
+            android:textSize="30dp" />
+
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/textViewNoSchedule"
@@ -24,10 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="No Archived Messages yet!"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp" />
-
+        android:text="No Archived Messages yet, click + to create New Message"
+        android:textSize="15dp" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -43,8 +46,6 @@
         android:backgroundTint="#F73B4564"
         android:clickable="true"
         app:srcCompat="@drawable/ic_plus2" />
-
-
 
     <RelativeLayout
         android:id="@+id/wtslayout"
@@ -65,7 +66,6 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/whatsapp2"
             tools:visibility="invisible" />
-
     </RelativeLayout>
 
 
@@ -87,12 +87,9 @@
             android:backgroundTint="@color/colorPrimaryDark"
             android:clickable="true"
             app:fabSize="mini"
-            app:srcCompat="@drawable/sms2"
+            app:srcCompat="@drawable/sms_new"
             tools:visibility="invisible" />
-
-
     </RelativeLayout>
-
 
 
     <RelativeLayout
@@ -114,8 +111,7 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_email"
             tools:visibility="invisible" />
-
     </RelativeLayout>
 
-
+    <!--END OF NAVIGATION BOTTOM BAR -->
 </RelativeLayout>
