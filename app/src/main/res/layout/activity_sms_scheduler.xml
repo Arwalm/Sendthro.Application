@@ -42,7 +42,7 @@
         android:layout_marginTop="698dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="19dp"
-        android:backgroundTint="#F73B4564"
+        android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         app:srcCompat="@drawable/ic_plus2" />
 

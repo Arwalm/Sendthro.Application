@@ -1,5 +1,7 @@
 package com.example.sendthro;
 
+
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +20,7 @@ import androidx.fragment.app.Fragment;
 public class scheduledmsg extends Fragment {
 
 
-    RelativeLayout sms, email ,whatsapp;
+    RelativeLayout sms, email ;
     private static Context context;
     private FirebaseAuth mAuth;
 
@@ -29,36 +31,31 @@ public class scheduledmsg extends Fragment {
 
         sms = view.findViewById(R.id.sms);
         email = view.findViewById(R.id.email);
-        whatsapp = view.findViewById(R.id.whatsapp);
+
 
         mAuth = FirebaseAuth.getInstance();
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton4);
         FloatingActionButton smsfab = (FloatingActionButton) view.findViewById(R.id.smsfab);
-        FloatingActionButton wtsfab = (FloatingActionButton) view.findViewById(R.id.wtsfab);
         FloatingActionButton emailfab = (FloatingActionButton) view.findViewById(R.id.emailfab);
 
-        final RelativeLayout wtslayout = (RelativeLayout) view.findViewById(R.id.wtslayout);
         final RelativeLayout smslayout = (RelativeLayout) view.findViewById(R.id.smslayout);
         final RelativeLayout emaillayout = (RelativeLayout) view.findViewById(R.id.emaillayout);
 
 
         smslayout.setVisibility(View.INVISIBLE);
         emaillayout.setVisibility(View.INVISIBLE);
-        wtslayout.setVisibility(View.INVISIBLE);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (wtslayout.getVisibility() == View.VISIBLE && smslayout.getVisibility() == View.VISIBLE
+                if (smslayout.getVisibility() == View.VISIBLE
                         && emaillayout.getVisibility() == View.VISIBLE) {
 
-                    wtslayout.setVisibility(View.GONE);
                     smslayout.setVisibility(View.GONE);
                     emaillayout.setVisibility(View.GONE);
 
                 } else {
-                    wtslayout.setVisibility(View.VISIBLE);
                     smslayout.setVisibility(View.VISIBLE);
                     emaillayout.setVisibility(View.VISIBLE);
                 }
@@ -79,19 +76,6 @@ public class scheduledmsg extends Fragment {
         });
 
 
-        wtsfab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mAuth.getCurrentUser() == null) {
-                    Intent NewUSer = new Intent(getActivity(), MainActivity.class);
-                    startActivity(NewUSer);
-                } else {
-                    Intent Do = new Intent(getActivity(), CreateWhatsMsg.class);
-                    startActivity(Do);
-                }
-            }
-        });
-
 
         emailfab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +84,7 @@ public class scheduledmsg extends Fragment {
                     Intent NewUSer = new Intent(getActivity(), MainActivity.class);
                     startActivity(NewUSer);
                 } else {
-                    Intent Do = new Intent(getActivity(), Newmessage.class);
+                    Intent Do = new Intent(getActivity(), CreateEmailScheduleActivity.class);
                     startActivity(Do);
                 }
             }
@@ -123,13 +107,6 @@ public class scheduledmsg extends Fragment {
             }
         });
 
-        whatsapp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent whatsappIntent = new Intent(getActivity(), WhatsAppScheduler.class);
-                startActivity(whatsappIntent);
-            }
-        });
 
         return view;
     }
@@ -139,3 +116,4 @@ public class scheduledmsg extends Fragment {
     }
 
 }
+

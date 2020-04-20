@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
-
 public class MyBroadcastReceiver extends BroadcastReceiver {
     String actionUriSMSSend = "com.scheduler.action.SMS_SEND";
     String actionUriEmailNotification = "com.scheduler.action.EMAIL_SEND";
@@ -45,10 +44,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
                 mBuilder.setAutoCancel(true);
                 //Vibration
                 mBuilder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
-
                 // set sound
                 mBuilder.setSound(alarmSound);
-
                 //LED
                 mBuilder.setLights(Color.RED, 3000, 3000);
                 mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
@@ -73,6 +70,12 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             }
         } else if (intent.getAction().equals(actionUriEmailNotification)) {
 
+            Bundle bndl = intent.getExtras();
+            String recip = bndl.getString("rec");
+            System.out.println("rr=" + recip);
+            String subj = bndl.getString("sub");
+            System.out.println("sss" + subj);
+
             int id = intent.getIntExtra("id", 0);
             System.out.println(id);
             NotificationManager mNotificationManager = (NotificationManager) context
@@ -88,15 +91,13 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
                     .setSmallIcon(R.drawable.ic_emailmsg)
                     .setContentTitle("Scheduler")
-                    .setContentText("E-mail Schedule alert, Tap to open");
+                    .setContentText("E-mail Schedule alert to" +recip+ ", Tap to open");
             mBuilder.setContentIntent(contentIntent);
             mBuilder.setAutoCancel(true);
             //Vibration
             mBuilder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
-
             // set sound
             mBuilder.setSound(alarmSound);
-
             //LED
             mBuilder.setLights(Color.YELLOW, 3000, 3000);
             mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());

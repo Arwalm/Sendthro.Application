@@ -149,6 +149,11 @@ public class CreateEmailScheduleActivity extends AppCompatActivity implements Ti
         String subject = editTextSubject.getText().toString().trim();
         String body = editTextBody.getText().toString().trim();
 
+        Bundle bundle = new Bundle();
+        bundle.putString("rec", recipient);
+        bundle.putString("sub", subject);
+
+
         if (!TextUtils.isEmpty(recipient) && !TextUtils.isEmpty(subject) && !TextUtils.isEmpty(body)) {
             calendar.set(mYear, mMonth, mDay, mHour, mMinute);
             int _id = (int) System.currentTimeMillis();

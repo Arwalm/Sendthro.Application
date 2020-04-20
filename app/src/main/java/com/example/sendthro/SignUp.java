@@ -14,14 +14,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.mobsandgeeks.saripaar.ValidationError;
@@ -36,7 +30,6 @@ import com.mobsandgeeks.saripaar.annotation.Pattern;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,10 +67,6 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
     private FirebaseFirestore fStore;
     String userID;
 
-
-    private String phoneVerificationId;
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks verificationCallbacks;
-    private PhoneAuthProvider.ForceResendingToken resendingToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,16 +128,6 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
         if (username.equalsIgnoreCase("pmk")) {
             Usernametxt.setError(getText(R.string.username_already_exists));
         }
-//        String mobile = PhoneNumbertxt.getText().toString().trim();
-//
-//        if(mobile.isEmpty() || mobile.length() < 10){
-//            PhoneNumbertxt.setError("Enter a valid Phone Number Please!");
-//            PhoneNumbertxt.requestFocus();
-//            return;
-//        }
-//        Intent intent = new Intent(SignUp.this, PhoneVerification.class);
-//        intent.putExtra("mobile", mobile);
-//        startActivity(intent);
     }
 
     @Override
@@ -208,91 +187,4 @@ public class SignUp extends AppCompatActivity implements Validator.ValidationLis
             }
         }
     }
-
-    public void sendCode(View view){
-        String phonenumber = PhoneNumbertxt.getText().toString();
-
-        setUpVerificatonCallbacks();
-
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phonenumber,
-                60,
-                TimeUnit.SECONDS,
-                this,
-                verificationCallbacks);
-    }
-
-    private void setUpVerificatonCallbacks(){
-        verificationCallbacks =
-                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                    @Override
-                    public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                        signInWithPhoneAuthCredential(phoneAuthCredential);
-                    }
-
-                    @Override
-                    public void onVerificationFailed(FirebaseException e) {
-                        if ( e instanceof FirebaseAuthInvalidCredentialsException){
-                            Log.d(TAG , "Invalid Credential: " + e.getLocalizedMessage());
-                        }else if(e instanceof FirebaseTooManyRequestsException){
-                            Log.d(TAG, "SMS Quota exceeded.");
-                        }
-                    }
-
-                    @Override
-                    public void onCodeSent(String verificationId,
-                                           PhoneAuthProvider.ForceResendingToken token){
-                        phoneVerificationId = verificationId;
-                        resendingToken = token;
-
-                    }
-                };
-    }
-
-    public void verifyCode(View view){
-//        String code = codetext.getText().toString();
-//
-//        PhoneAuthCredential credential =
-//                PhoneAuthProvider.getCredential(phoneVerificationId, code);
-//        signInWithPhoneAuthCredential(credential);
-    }
-
-    private void signInWithPhoneAuthCredential (PhoneAuthCredential credential){
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this,  new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-//                            signoutButton.setEnabled(true);
-//                            codeText.setText("");
-//                            statusText.setText("Signed In");
-//                            resendButton.setEnabled(false);
-//                            verifyButton.setEnabled(false);
-                            FirebaseUser user = task.getResult().getUser();
-
-                        } else {
-                            if (task.getException() instanceof
-                                    FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
-                            }
-                        }
-                    }
-                });
-    }
-
-    public void resendCode(View view) {
-
-        String phoneNumber = PhoneNumbertxt.getText().toString();
-
-        setUpVerificatonCallbacks();
-
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumber,
-                60,
-                TimeUnit.SECONDS,
-                this,
-                verificationCallbacks);
-               // resendToken);
-    }
-
 }

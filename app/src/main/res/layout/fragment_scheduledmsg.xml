@@ -28,68 +28,83 @@
 
     <RelativeLayout
         android:id="@+id/sms"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_width="398dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="262dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/box"
         android:clickable="true"
         android:onClick="SMS_Msg">
 
-            <TextView
-                android:id="@+id/sms_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text=">  SMS Scheduler"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/sms_text"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="20dp"
+            android:text="  SMS Scheduler"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="64dp"
+            android:layout_height="47dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/sms">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_width="398dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/box"
         android:clickable="true"
         android:onClick="emai_Msg">
 
-            <TextView
-                android:id="@+id/email_text"
-                android:layout_marginLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=">  Email Scheduler"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
 
+        <TextView
+            android:id="@+id/email_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginBottom="18dp"
+            android:text="  Email Scheduler"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="64dp"
+            android:layout_height="47dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/email">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+        
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/whatsapp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="224dp">
-
-
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:id="@+id/whatsapp_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=">  WhatsApp Scheduler"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
-
-
-    </RelativeLayout>
-
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -102,34 +117,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="638dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="#F73B4564"
+        android:backgroundTint="#B54A5A77"
         android:clickable="true"
         app:srcCompat="@drawable/ic_plus2" />
-
-
-
-    <RelativeLayout
-        android:id="@+id/wtslayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="655dp"
-        android:layout_marginEnd="284dp">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/wtsfab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:clickable="true"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/whatsapp2"
-            tools:visibility="invisible" />
-
-    </RelativeLayout>
-
 
 
     <RelativeLayout
@@ -137,8 +127,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="602dp">
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="545dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/smsfab"
@@ -146,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
             app:fabSize="mini"
             app:srcCompat="@drawable/sms_new"
@@ -162,7 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="26dp"
         android:layout_marginTop="588dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -171,7 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_email"

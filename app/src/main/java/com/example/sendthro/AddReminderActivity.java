@@ -104,8 +104,6 @@ public class AddReminderActivity extends AppCompatActivity implements
         } else {
 
             setTitle(getString(R.string.editor_activity_title_edit_reminder));
-
-
             getLoaderManager().initLoader(EXISTING_VEHICLE_LOADER, null, this);
         }
 
@@ -137,16 +135,6 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         mDate = mDay + "/" + mMonth + "/" + mYear;
         mTime = mHour + ":" + mMinute;
-
-////_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
-//        mTitle = mTitleText.getText().toString();
-//        Intent serviceintent = new Intent (AddReminderActivity.this, ReminderAlarmService.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putString("title", mTitle);
-//        serviceintent.putExtra("Title",bundle);
-//        serviceintent.putExtras(bundle);
-//        startService(serviceintent);
-////_-_-_-__-_-_-__-_-_-__-_-_-__-_-_-_//
 
         // Setup Reminder Title EditText
         mTitleText.addTextChangedListener(new TextWatcher() {
@@ -216,8 +204,6 @@ public class AddReminderActivity extends AppCompatActivity implements
         getSupportActionBar().setTitle(" ");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
     }
 
     @Override
@@ -232,7 +218,6 @@ public class AddReminderActivity extends AppCompatActivity implements
         outState.putCharSequence(KEY_REPEAT_TYPE, mRepeatTypeText.getText());
         outState.putCharSequence(KEY_ACTIVE, mActive);
     }
-
     // On clicking Time picker
     public void setTime(View v) {
         Calendar now = Calendar.getInstance();
@@ -372,7 +357,6 @@ public class AddReminderActivity extends AppCompatActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu options from the res/menu/menu_editor.xml file.
         // This adds menu items to the app bar.
         getMenuInflater().inflate(R.menu.menu_add_reminder, menu);
         return true;
@@ -518,13 +502,6 @@ public class AddReminderActivity extends AppCompatActivity implements
     // On clicking the save button
     public void saveReminder() {
 
-     /*   if (mCurrentReminderUri == null ) {
-            // Since no fields were modified, we can return early without creating a new reminder.
-            // No need to create ContentValues and no need to do any ContentProvider operations.
-            return;
-        }
-*/
-
         ContentValues values = new ContentValues();
 
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_TITLE, mTitle);
@@ -598,10 +575,6 @@ public class AddReminderActivity extends AppCompatActivity implements
                 new AlarmScheduler().setAlarm(getApplicationContext(), selectedTimestamp, mCurrentReminderUri);
             }
         }
-//
-//        // Create toast to confirm new reminder
-//        Toast.makeText(getApplicationContext(), "Saved",
-//                Toast.LENGTH_SHORT).show();
 
     }
 
