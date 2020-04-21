@@ -9,15 +9,23 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.style.RelativeSizeSpan;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Email;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
@@ -25,19 +33,26 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class CreateEmailScheduleActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class CreateEmailScheduleActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener, Validator.ValidationListener {
 
+    @NotEmpty
     @BindView(R.id.textViewTime)
     TextView textViewTime;
+    @NotEmpty
     @BindView(R.id.textViewDate)
     TextView textViewDate;
     @BindView(R.id.editTextRecipient)
+    @NotEmpty
+    @Email
+    @Pattern(regex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")
     EditText editTextRecipient;
     @BindView(R.id.editTextSubject)
+    @NotEmpty
     EditText editTextSubject;
     @BindView(R.id.editTextBody)
     EditText editTextBody;
-
+    private Validator validator;
+    Button btnSetSchedule ;
 
     int mHour, mMinute, mYear, mMonth, mDay;
     Calendar calendar;
@@ -50,7 +65,49 @@ public class CreateEmailScheduleActivity extends AppCompatActivity implements Ti
         ButterKnife.bind(this);
         databaseHelper = new EmailDatabaseHelper(this);
         calendar = Calendar.getInstance();
+
+        initView();
+        validator = new Validator(this);
+        validator.setValidationListener(this);
     }
+
+    private void initView() {
+        editTextRecipient = findViewById(R.id.editTextRecipient);
+        btnSetSchedule = findViewById(R.id.btnSetSchedule);
+        textViewDate = findViewById(R.id.textViewDate);
+        textViewTime = findViewById(R.id.textViewTime);
+
+        btnSetSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnSetSchedule_onClick(view);
+            }
+        });
+    }
+
+    private void btnSetSchedule_onClick(View view) {
+        validator.validate();
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        setSchedule();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 
     @OnClick(R.id.relativeLayoutSelectDate)
     public void getDate() {

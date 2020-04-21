@@ -4,10 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/grad_bg"
     android:animateLayoutChanges="true"
+    android:background="@drawable/grad_bg"
     android:backgroundTintMode="add"
     tools:context=".MainActivity">
+    <!--    android:background="@drawable/grad_bg"-->
+    <!--    B234 //  -->
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/qulogo" />
+
+    <RelativeLayout
+        android:id="@+id/rellay2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/skipbtn"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="88dp"
+            android:background="@drawable/btn_bg"
+            android:text="Skip"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -23,7 +61,7 @@
             android:layout_height="190dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/app_icon"/>
+            android:src="@drawable/app_icon" />
 
 
         <RelativeLayout
@@ -32,16 +70,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgView_logo"
             android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tv_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="WELCOME TO SENDTHRO"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
 
             <LinearLayout
                 android:id="@+id/linlay1"
@@ -59,15 +87,15 @@
                     <Button
                         android:id="@+id/signinbtn"
                         android:layout_width="330dp"
-                        android:background="@drawable/btn_bg"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="SIGN IN"
-                        android:textSize="24sp"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@color/white" />
+                        android:text="SIGN IN"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
 
                 </LinearLayout>
 
@@ -81,61 +109,35 @@
                         android:id="@+id/signupbtn"
                         style="@style/Widget.AppCompat.Button"
                         android:layout_width="330dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/btn_bg"
                         android:fontFamily="sans-serif-condensed"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="SIGN UP"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textSize="24sp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="WELCOME TO SENDTHRO"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
 
         </RelativeLayout>
 
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rellay2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/skipbtn"
-            android:layout_width="91dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginBottom="88dp"
-            android:text="Skip"
-            android:background="@drawable/btn_bg"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
-    </RelativeLayout>
-
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="10dp"
-        android:visibility="visible"
-        app:srcCompat="@drawable/qulogo" />
 
 </RelativeLayout>

@@ -6,8 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EmailScheduler">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/white"/>
+
     <ListView
         android:id="@+id/emailListView"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:entries="@layout/layout_row_sms"
@@ -23,8 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="No Email Scheduled yet!"
-        android:textSize="20sp" />
+        android:textColor="@color/colorAccent"
+        android:text="No Scheduled Email yet!"
+        android:textSize="17dp" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -40,7 +50,7 @@
         android:layout_marginTop="698dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="19dp"
-        android:backgroundTint="#F73B4564"
+        android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         app:srcCompat="@drawable/ic_plus2" />
 

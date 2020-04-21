@@ -6,9 +6,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SmsScheduler">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/white"/>
 
     <ListView
         android:id="@+id/smsListView"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:entries="@layout/layout_row_sms"
@@ -26,7 +33,7 @@
         android:gravity="center"
         android:text="No Scheduled Messages yet!"
         android:textColor="@color/colorAccent"
-        android:textSize="20sp" />
+        android:textSize="17dp" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -19,12 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="#B54A5A77"
+        android:background="@color/colorPrimary"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-        app:menu="@menu/m_nave" />
-
-
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/m_nave"/>
 </RelativeLayout>
-
-

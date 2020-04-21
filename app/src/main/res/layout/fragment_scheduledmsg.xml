@@ -6,24 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_scheduledmsg">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorAccent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="0dp"
-            android:gravity="center"
-            android:text="Scheduled Messages"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp" />
-
-    </RelativeLayout>
 
 
     <RelativeLayout
@@ -35,7 +17,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="262dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/box"
         android:clickable="true"
@@ -75,7 +57,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="348dp"
+        android:layout_marginTop="380dp"
         android:layout_marginEnd="6dp"
         android:background="@drawable/box"
         android:clickable="true"
@@ -103,8 +85,10 @@
             android:src="@drawable/email">
 
         </androidx.appcompat.widget.AppCompatImageView>
-        
+
     </RelativeLayout>
+
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -122,13 +106,14 @@
         app:srcCompat="@drawable/ic_plus2" />
 
 
+
     <RelativeLayout
         android:id="@+id/smslayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="545dp">
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="540dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/smsfab"
@@ -141,10 +126,7 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/sms_new"
             tools:visibility="invisible" />
-
-
     </RelativeLayout>
-
 
 
     <RelativeLayout
@@ -152,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginStart="26dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="588dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -166,8 +148,8 @@
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_email"
             tools:visibility="invisible" />
-
     </RelativeLayout>
+
 
 
 </RelativeLayout>

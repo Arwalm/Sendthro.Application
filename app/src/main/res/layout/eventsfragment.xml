@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:id="@+id/events_view">
 
+
+
     <RelativeLayout
         android:id="@+id/qu_events"
         android:layout_width="match_parent"
@@ -26,30 +28,27 @@
             android:layout_marginRight="32dp"
             android:src="@drawable/ic_qu" />
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/qu_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/qu"
-            android:orientation="vertical">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="51dp"
+            android:layout_marginBottom="23dp"
+            android:text="Qassim University Events"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/qu_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Qassim University Events"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/QU_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
+        <TextView
+            android:id="@+id/QU_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
 
 
-        </LinearLayout>
 
     </RelativeLayout>
 
@@ -74,30 +73,27 @@
             android:layout_marginRight="32dp"
             android:src="@drawable/ic_saudi" />
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/saudi_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/saudi"
-            android:orientation="vertical"
-            tools:ignore="NotSibling">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="23dp"
+            android:text="Saudi Events"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/saudi_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Saudi Events"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18dp" />
+        <TextView
+            android:id="@+id/Saudi_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/Saudi_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
 
-        </LinearLayout>
 
     </RelativeLayout>
 
@@ -122,30 +118,26 @@
             android:layout_marginRight="32dp"
             android:src="@drawable/ic_user" />
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/user_Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/user"
-            android:orientation="vertical">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="53dp"
+            android:layout_marginBottom="23dp"
+            android:text="Your Events"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/user_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Events"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18dp" />
+        <TextView
+            android:id="@+id/User_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/User_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp" />
-
-
-        </LinearLayout>
 
     </RelativeLayout>
 

@@ -92,7 +92,7 @@ public class SmsScheduler extends AppCompatActivity {
     private void deleteSchedule() {
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setMessage("Are you sure?");
-        dialog.setTitle("Note delete");
+        dialog.setTitle("Delete!");
         dialog.setIcon(android.R.drawable.ic_dialog_alert);
         dialog.setCancelable(false);
 

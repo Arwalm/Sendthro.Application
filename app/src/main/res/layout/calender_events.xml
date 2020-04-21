@@ -23,91 +23,91 @@
         app:menu="@menu/calendar_menu" />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="638dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#B54A5A77"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_plus2" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/floatingActionButton4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_marginStart="22dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginTop="638dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:backgroundTint="#B54A5A77"-->
+<!--        android:clickable="true"-->
+<!--        app:srcCompat="@drawable/ic_plus2" />-->
 
 
 
-    <RelativeLayout
-        android:id="@+id/wtslayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="655dp"
-        android:layout_marginEnd="284dp">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/wtslayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="655dp"-->
+<!--        android:layout_marginEnd="284dp">-->
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/wtsfab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:backgroundTint="@color/colorPrimary"
-            android:clickable="true"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/whatsapp2"
-            tools:visibility="invisible" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/wtsfab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:backgroundTint="@color/colorPrimary"-->
+<!--            android:clickable="true"-->
+<!--            app:fabSize="mini"-->
+<!--            app:srcCompat="@drawable/whatsapp2"-->
+<!--            tools:visibility="invisible" />-->
 
-    </RelativeLayout>
-
-
-
-    <RelativeLayout
-        android:id="@+id/smslayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="602dp">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/smsfab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:backgroundTint="@color/colorPrimary"
-            android:clickable="true"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/sms_new"
-            tools:visibility="invisible" />
+<!--    </RelativeLayout>-->
 
 
-    </RelativeLayout>
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/smslayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginStart="76dp"-->
+<!--        android:layout_marginTop="602dp">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/smsfab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:backgroundTint="@color/colorPrimary"-->
+<!--            android:clickable="true"-->
+<!--            app:fabSize="mini"-->
+<!--            app:srcCompat="@drawable/sms_new"-->
+<!--            tools:visibility="invisible" />-->
 
 
-    <RelativeLayout
-        android:id="@+id/emaillayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="588dp">
+<!--    </RelativeLayout>-->
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/emailfab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:backgroundTint="@color/colorPrimary"
-            android:clickable="true"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_email"
-            tools:visibility="invisible" />
 
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/emaillayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="588dp">-->
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/emailfab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:backgroundTint="@color/colorPrimary"-->
+<!--            android:clickable="true"-->
+<!--            app:fabSize="mini"-->
+<!--            app:srcCompat="@drawable/ic_email"-->
+<!--            tools:visibility="invisible" />-->
+
+<!--    </RelativeLayout>-->
 
 
 </RelativeLayout>

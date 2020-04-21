@@ -1,14 +1,19 @@
 package com.example.sendthro;
 
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.SpannableString;
 import android.text.format.DateFormat;
 import android.text.style.RelativeSizeSpan;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -48,18 +53,20 @@ public class SmsUpdateSchedulerActivity extends AppCompatActivity implements Dat
     int mHour, mMinute, mYear, mMonth, mDay;
     SmsDatabaseHelper databaseHelper;
     Sms sms = new Sms();
+    Button addto;
+    private static final int PICK_CONTACT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_update_scheduler);
         ButterKnife.bind(this);
-        calendar = Calendar.getInstance();
         databaseHelper = new SmsDatabaseHelper(this);
-
+        addto = findViewById(R.id.addto);
+        calendar = Calendar.getInstance();
+        //calendar.setTimeInMillis(sms.getMilli());
         sms = (Sms) getIntent().getSerializableExtra("sms");
-        Toast.makeText(this, sms.getNumber(), Toast.LENGTH_LONG).show();
-        calendar.setTimeInMillis(sms.getMilli());
+        //Toast.makeText(this, sms.getNumber(), Toast.LENGTH_LONG).show();
 
         String selectedDate = sms.getDate();
 
@@ -75,10 +82,15 @@ public class SmsUpdateSchedulerActivity extends AppCompatActivity implements Dat
 
         editTextMessage.setText(sms.getMessage());
 
-        calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(sms.getMilli());
-
         editTextToRecipient.setText(sms.getNumber());
+        addto.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(it, PICK_CONTACT);
+            }
+        });
     }
 
     @OnClick(R.id.btnUpdateSchedule)
@@ -268,5 +280,40 @@ public class SmsUpdateSchedulerActivity extends AppCompatActivity implements Dat
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.HOUR, hourOfDay);
+    }
+
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
+        switch (reqCode) {
+            case (PICK_CONTACT) :
+                if (resultCode == Activity.RESULT_OK) {
+
+                    Uri contactData = data.getData();
+                    Cursor c =  managedQuery(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
+
+                        String id =c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+
+                        String hasPhone =c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+                        String phoneNo = null ;
+
+                        if (hasPhone.equalsIgnoreCase("1")) {
+                            Cursor phones = getContentResolver().query(
+                                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ id,
+                                    null, null);
+                            phones.moveToFirst();
+                            phoneNo = phones.getString(phones.getColumnIndex("data1"));
+
+                            editTextToRecipient.setText(phoneNo);
+                            System.out.println("number is:"+phoneNo);
+                        }
+                        String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                    }
+                }
+                break;
+        }
     }
 }

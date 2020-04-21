@@ -22,24 +22,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CreateSmsScheduleActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class CreateSmsScheduleActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, Validator.ValidationListener {
 
     //@BindView(R.id.btnSetSchedule)
     Button btnSetSchedule;
     //@BindView(R.id.textViewDate)
+    @NotEmpty
     TextView textViewDate;
     //@BindView(R.id.textViewTime)
+    @NotEmpty
     TextView textViewTime;
     //@BindView(R.id.relativeLayoutSelectTime)
     RelativeLayout relativeLayoutSelectTime;
@@ -47,12 +53,15 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
     RelativeLayout relativeLayoutSelectDate;
     Calendar calendar;
     //@BindView(R.id.editTextMessage)
+    @NotEmpty
     EditText editTextMessage;
     //@BindView(R.id.editTextToRecipient)
+    @NotEmpty
     EditText editTextToRecipient;
-
     Button addto;
     EditText toText;
+
+    private Validator validator;
 
     private static final int PERMISSIONS_REQUEST_SEND_SMS = 101;
     int mHour, mMinute, mYear, mMonth, mDay;
@@ -67,15 +76,14 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
         ButterKnife.bind(this);
         calendar = Calendar.getInstance();
 
-        btnSetSchedule = findViewById(R.id.btnSetSchedule);
-        textViewDate = findViewById(R.id.textViewDate);
-        textViewTime = findViewById(R.id.textViewTime);
-        relativeLayoutSelectTime = findViewById(R.id.relativeLayoutSelectTime);
-        relativeLayoutSelectDate = findViewById(R.id.relativeLayoutSelectDate);
-        editTextMessage = findViewById(R.id.editTextMessage);
-        editTextToRecipient = findViewById(R.id.editTextToRecipient);
+        initView();
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+
         addto = findViewById(R.id.addto);
 
+        relativeLayoutSelectTime = findViewById(R.id.relativeLayoutSelectTime);
+        relativeLayoutSelectDate = findViewById(R.id.relativeLayoutSelectDate);
 
         databaseHelper = new SmsDatabaseHelper(this);
 
@@ -90,12 +98,52 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
         });
     }
 
+    private void initView() {
+        btnSetSchedule = findViewById(R.id.btnSetSchedule);
+        textViewDate = findViewById(R.id.textViewDate);
+        textViewTime = findViewById(R.id.textViewTime);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        editTextToRecipient = findViewById(R.id.editTextToRecipient);
+
+
+        btnSetSchedule.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            btnSetSchedule_onClick(view);
+        }
+    });
+}
+
+    private void btnSetSchedule_onClick(View view) {
+        validator.validate();
+        }
+
+    @Override
+    public void onValidationSucceeded() {
+        setSmsSchedule();
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String message = error.getCollatedErrorMessage(this);
+            // Display error messages
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     @OnClick(R.id.btnSetSchedule)
     public void setSchedule() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_REQUEST_SEND_SMS);
             //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
-        } else {
+        }
+        else {
             setSmsSchedule();
         }
     }
@@ -111,6 +159,20 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
             }
         }
     }
+//
+//    @OnClick(R.id.textViewDate)
+//    public void testDate() {
+//        if (textViewDate == null){
+//            Toast.makeText(this, "Please Select Date", Toast.LENGTH_LONG).show();
+//        }
+//    }
+//
+//    @OnClick(R.id.textViewTime)
+//    public void testTime() {
+//        if (textViewTime == null){
+//            Toast.makeText(this, "Please Select Time", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
     private void setSmsSchedule() {
         String message = editTextMessage.getText().toString();
@@ -137,8 +199,8 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
 
         if (databaseHelper.addSms(_id, contactNumber, message, textViewTime.getText().toString(),
                 textViewDate.getText().toString(), (int) calendar.getTimeInMillis())) {
-            finish();
             startActivity(new Intent(this, SmsScheduler.class));
+            finish();
         } else {
             Toast.makeText(this, "Something wrong", Toast.LENGTH_SHORT).show();
         }
@@ -158,6 +220,7 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
     @OnClick(R.id.relativeLayoutSelectTime)
     public void getTime() {
         // initialize
+
         mHour = calendar.get(Calendar.HOUR_OF_DAY);
         mMinute = calendar.get(Calendar.MINUTE);
 
@@ -280,26 +343,6 @@ public class CreateSmsScheduleActivity extends AppCompatActivity implements Date
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.HOUR, hourOfDay);
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == PICK_CONTACT) {
-//            if (requestCode == Activity.RESULT_OK) {
-//                Uri contactData = data.getData();
-//                Cursor cursor = managedQuery(contactData, null, null, null, null);
-//                cursor.moveToFirst();
-//                //Get number and name from cursor
-//                String number = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER));
-//                String contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-//                //set number and name in editext
-//                toText.setText(contactName);
-//                toText.setText(number);
-//            } else {
-//                Toast.makeText(this, "NOT WORKING", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//    }
 
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {

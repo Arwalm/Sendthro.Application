@@ -56,7 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="8dp"
-                android:text="Details"
                 android:id="@+id/details"
                 android:textSize="20dp"
                 android:gravity="center_vertical"
